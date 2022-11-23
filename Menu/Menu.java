@@ -1,4 +1,7 @@
-package Final.Menu;
+//Note: Sản phẩm lỗi, Bán hàng lỗi
+//Cần Chỉnh Sửa: Chi tiết sản phẩm
+
+package Menu;
 
 import Product_center.Configuation;
 import Product_center.QuanLySanPham;
@@ -39,6 +42,7 @@ public class Menu {
         QuanLyNCC.QuanLyNhaCungCap ncc = new QuanLyNhaCungCap();
 
     }
+
     public void showmenuPrimary() {
         System.out.println("\t\t\t\t\t\t\t\t +----QUẢN LÝ CỬA HÀNG----+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Exit                  |");
@@ -81,26 +85,22 @@ public class Menu {
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
 
-    public void showmenusell(){
+    public void showmenusell() {
         System.out.println("\t\t\t\t\t\t\t\t +-----QUẢN LÝ BÁN HÀNG----+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Quay Lại Menu Chính    |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         //System.out.println("\t\t\t\t\t\t\t\t |1.Dạo Quanh Cửa Hàng     |");
-        System.out.println("\t\t\t\t\t\t\t\t |1.Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Nhập Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Xóa Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Sửa Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Tìm kiếm Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |5.Xuất Hóa Đơn                |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
 
     }
-    public void showmenusell1(){
-        System.out.println("\t\t\t\t\t\t\t\t +-----QUẢN LÝ BÁN HÀNG----+");
-        System.out.println("\t\t\t\t\t\t\t\t |0.Exit   |");
-        System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
-        //System.out.println("\t\t\t\t\t\t\t\t |1.Dạo Quanh Cửa Hàng     |");
-        System.out.println("\t\t\t\t\t\t\t\t |1.Hóa Đơn                |");
-        System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
-    }
-    public void showmenustorage(){
+
+    public void showmenustorage() {
         System.out.println("\t\t\t\t\t\t\t\t +---------QUẢN LÝ SẢN PHẨM---------+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Quay Lại Menu Chính        |");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------------------+");
@@ -110,10 +110,10 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t |4.Xóa Sản Phẩm               |");
         System.out.println("\t\t\t\t\t\t\t\t |5.Sửa Thông Tin Sản Phẩm (ID)|");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
 
-    public void extra_showmenustorage(){
+    public void extra_showmenustorage() {
         System.out.println("\t\t\t\t\t\t\t\t +---------QUẢN LÝ CHI TIẾT SẢN PHẨM--------------+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Quay Lại Menu Chính                           |");
         System.out.println("\t\t\t\t\t\t\t\t +------------------------------------------------+");
@@ -122,7 +122,7 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t |3.Tìm kiếm thông tin chi tiết sản phẩm (ID)     |");
         System.out.println("\t\t\t\t\t\t\t\t |4.Sửa thông tin Chi Tiết Sản Phẩm (ID)          |");
         System.out.println("\t\t\t\t\t\t\t\t +------------------------------------------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
 
     public void menuPhieuNhap() {
@@ -161,32 +161,34 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
-    public void menutt(){
+
+    public void menutt() {
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         System.out.println("\t\t\t\t\t\t\t\t | Bạn có muốn chọn thêm ? |");
         System.out.println("\t\t\t\t\t\t\t\t |                         |");
         System.out.println("\t\t\t\t\t\t\t\t |  1.Có          2.Không  |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
-    public void menuchild(){
+
+    public void menuchild() {
         System.out.println("\t\t\t\t\t\t\t\t +-----------------+");
         System.out.println("\t\t\t\t\t\t\t\t |1.Lưu            |");
         System.out.println("\t\t\t\t\t\t\t\t |2.Bỏ             |");
         System.out.println("\t\t\t\t\t\t\t\t |3.Nhập Lại       |");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------+");
-        System.out.print  ("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
 
-//    public void menusell() {
-//        do {
+    //        do {
 //            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Bán Hàng <<\n");
 //            showmenusell1();
 //            int x;
-//            x = input.nextInt();
+//            x = public void menusell() {
+    //input.nextInt();
 //            switch (x) {
 //                case 0 ->
-//                    //System.out.println("\n\t\\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+//                    System.out.println("\n\t\\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
 //                        exit(0);
 //                case 1 -> {
 //                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----HÓA ĐƠN---");
@@ -197,301 +199,292 @@ public class Menu {
 //
 //        }
 //    }
-
-    public void menu() {
-        do {
-            showmenuPrimary();
-            choice = input.nextInt();
-            switch (choice) {
-                // KHÁCH HÀNG //
-                case 1:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Khách Hàng <<\n");
-                        showmenucustomer();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t-----Nhập Thông Tin Khách Hàng-----");
-                                kh.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t-----Danh Sách Khách Hàng-----");
-                                kh.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t-----Tìm Kiếm Khách Hàng-----");
-                                kh.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t-----Xóa Khách Hàng-(ID)------");
-                                kh.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t-----Sửa Thông Tin Khách Hàng-(ID)-----");
-                                kh.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-                case 2:
-                    //NHÂN VIÊN
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Nhân Viên <<\n");
-                        showmenustaff();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập Thông Tin Nhân Viên-----");
-                                nv.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Danh Sách Nhân Viên-----");
-                                nv.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm Kiếm Nhân Viên-----");
-                                nv.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Nhân Viên-(ID)-----");
-                                nv.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Nhân Viên-(ID)-----");
-                                nv.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-//                case 3:
-//                    //BÁN HÀNG
-//                    do {
-//                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Bán Hàng <<\n");
-//                        showmenusell();
-//                        int x;
-//                        x = input.nextInt();
-//                        switch (x) {
-//                            case 0 -> {
-//                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-//                                menu();
-//                            }
-//                            case 1 -> {
-//                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----HÓA ĐƠN---");
-//                                ex.Input();
-//                                p.ShowListProduct();
-//                                System.out.println("Chọn sản phẩm :");
-//                                int choice;
-//                                int flagchoice = 0;
-//                                do {
-//                                    ex.Choice();
-//                                    menutt();
-//                                    System.out.println("Nhập lựa chọn của bạn : ");
-//                                    choice = input.nextInt();
-//                                    if (choice == 1) {
-//                                        flagchoice = 0;
-//                                        flagchoice++;
-//                                    }
-//                                    if (choice == 2) {
-//                                        flagchoice = 0;
-//                                    }
-//                                } while (flagchoice != 0);
-//                                ex.Output();
-//                                System.out.println("\t\t\t\t\t\t\t\t\t+-------------------+");
-//                                System.out.println("\t\t\t\t\t\t\t\t\t|    Xác Nhận ?     |");
-//                                System.out.println("\t\t\t\t\t\t\t\t\t|                   |");
-//                                System.out.println("\t\t\t\t\t\t\t\t\t| 1.Có      2.Không |");
-//                                System.out.println("\t\t\t\t\t\t\t\t\t+-------------------+");
-//                                int b = input.nextInt();
-//                                if (b == 1) {
-//                                    // System.out.println(ex.a());
-//                                    for (int i = 0; i < 10; i++) {
-//                                        ex.a();
-//                                        p.DelProductwithSeriReceipt(ex.barr[i]);
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }while(flag !=0);
-//                    break;
-                case 4:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Sản Phẩm <<\n");
-                        showmenustorage();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập sản phẩm mới---\n");
-                                sp.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất sản phẩm-----\n");
-                                sp.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm sản phẩm-----\n");
-                                sp.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
-                                sp.Delete();
-                                cfg.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Sản Phẩm-(ID)-----\n");
-                                sp.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-                case 5:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Chi Tiết Sản Phẩm <<\n");
-                        extra_showmenustorage();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập chi tiết sản phẩm mới---\n");
-                                cfg.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất chi tiết sản phẩm-----\n");
-                                sp.Output();
-                                cfg.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm chi tiết sản phẩm-----\n");
-                                sp.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
-                                sp.Delete();
-                                cfg.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Chi Tiết Sản Phẩm-(ID)-----\n");
-                                cfg.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-                case 6:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Phiếu Nhập <<\n");
-                        menuPhieuNhap();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập chi tiết phiếu nhập---\n");
-                                ctpn.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách phiếu nhập-----\n");
-                                ctpn.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm phiếu nhập-(ID)-----\n");
-                                ctpn.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa phiếu nhập-(ID)-----\n");
-                                ctpn.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa thông tin phiếu nhập-(ID)-----\n");
-                                ctpn.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-                case 7:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Nhà Cung Cấp <<\n");
-                        menuNCC();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập thông tin nhà cung cấp---\n");
-                                ncc.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách nhà cung cấp-----\n");
-                                ncc.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm nhà cung cấp-(ID)-----\n");
-                                ncc.Search_byCategory();
-                            }
-                            case 4 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa thông tin nhà cung cấp-(ID)-----\n");
-                                ncc.Delete();
-                            }
-                            case 5 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa thông tin nhà cung cấp-(ID)-----\n");
-                                ncc.Update();
-                            }
-                        }
-                    } while (flag != 0);
-                    break;
-                case 8:
-                    do {
-                        System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Bảo Hành <<\n");
-                        menuBaoHanh();
-                        int x;
-                        x = input.nextInt();
-                        switch (x) {
-                            case 0 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
-                                menu();
-                            }
-                            case 1 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập thông tin bảo hành---\n");
-                                bh.Add();
-                            }
-                            case 2 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách bảo hành-----\n");
-                                bh.Output();
-                            }
-                            case 3 -> {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm thông tin bảo hành-----\n");
-                                bh.Searchby_Category();
-                            }
+        public void menu () {
+            do {
+                showmenuPrimary();
+                choice = input.nextInt();
+                switch (choice) {
+                    // KHÁCH HÀNG //
+                    case 1:
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Khách Hàng <<\n");
+                            showmenucustomer();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t-----Nhập Thông Tin Khách Hàng-----");
+                                    kh.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t-----Danh Sách Khách Hàng-----");
+                                    kh.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t-----Tìm Kiếm Khách Hàng-----");
+                                    kh.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t-----Xóa Khách Hàng-(ID)------");
+                                    kh.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t-----Sửa Thông Tin Khách Hàng-(ID)-----");
+                                    kh.Update();
+                                }
                             }
                         } while (flag != 0);
-                    break;
-                default:
-                    flag = 0;
-                    break;
-            }
-        } while (flag != 0);
+                        break;
+                    case 2:
+                        //NHÂN VIÊN
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Nhân Viên <<\n");
+                            showmenustaff();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập Thông Tin Nhân Viên-----");
+                                    nv.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Danh Sách Nhân Viên-----");
+                                    nv.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm Kiếm Nhân Viên-----");
+                                    nv.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Nhân Viên-(ID)-----");
+                                    nv.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Nhân Viên-(ID)-----");
+                                    nv.Update();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 3:
+                        //BÁN HÀNG
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Bán Hàng <<\n");
+                            showmenusell();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập Hóa Đơn---");
+                                    hd.Add();
+                                    hd.AddSP();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Hóa Đơn---");
+                                    hd.Delete();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Hóa Đơn---");
+                                    hd.Update();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm Kiếm Hóa Đơn---");
+                                    hd.Search_byCategory();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất Hóa Đơn-----\n");
+                                    hd.Output();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 4:
+                        // SẢN PHẨM
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Sản Phẩm <<\n");
+                            showmenustorage();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập sản phẩm mới---\n");
+                                    sp.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất sản phẩm-----\n");
+                                    sp.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm sản phẩm-----\n");
+                                    sp.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
+                                    sp.Delete();
+                                    cfg.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Sản Phẩm-(ID)-----\n");
+                                    sp.Update();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 5:
+                        // CHI TIET SAN PHAM
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Chi Tiết Sản Phẩm <<\n");
+                            extra_showmenustorage();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập chi tiết sản phẩm mới---\n");
+                                    cfg.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất chi tiết sản phẩm-----\n");
+                                    sp.Output();
+                                    cfg.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm chi tiết sản phẩm-----\n");
+                                    sp.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
+                                    sp.Delete();
+                                    cfg.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Chi Tiết Sản Phẩm-(ID)-----\n");
+                                    cfg.Update();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 6:
+                        // PHIEU NHAP
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Phiếu Nhập <<\n");
+                            menuPhieuNhap();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập chi tiết phiếu nhập---\n");
+                                    ctpn.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách phiếu nhập-----\n");
+                                    ctpn.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm phiếu nhập-(ID)-----\n");
+                                    ctpn.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa phiếu nhập-(ID)-----\n");
+                                    ctpn.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa thông tin phiếu nhập-(ID)-----\n");
+                                    ctpn.Update();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 7:
+                        // NHÀ CUNG CẤP
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Nhà Cung Cấp <<\n");
+                            menuNCC();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập thông tin nhà cung cấp---\n");
+                                    ncc.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách nhà cung cấp-----\n");
+                                    ncc.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm nhà cung cấp-(ID)-----\n");
+                                    ncc.Search_byCategory();
+                                }
+                                case 4 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa thông tin nhà cung cấp-(ID)-----\n");
+                                    ncc.Delete();
+                                }
+                                case 5 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa thông tin nhà cung cấp-(ID)-----\n");
+                                    ncc.Update();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    case 8:
+                        // QUẢN LÝ BẢO HÀNH
+                        do {
+                            System.out.println("\n\t\t\t\t\t\t\t\t>> Bạn Đã Chọn Quản Lý Bảo Hành <<\n");
+                            menuBaoHanh();
+                            int x;
+                            x = input.nextInt();
+                            switch (x) {
+                                case 0 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t>> Quay Về Quản Lý Cửa Hàng <<\n");
+                                    menu();
+                                }
+                                case 1 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Nhập thông tin bảo hành---\n");
+                                    bh.Add();
+                                }
+                                case 2 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách bảo hành-----\n");
+                                    bh.Output();
+                                }
+                                case 3 -> {
+                                    System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm thông tin bảo hành-----\n");
+                                    bh.Search_byCategory();
+                                }
+                            }
+                        } while (flag != 0);
+                        break;
+                    default:
+                        flag = 0;
+                        break;
+                }
+            } while (flag != 0);
+        }
     }
-}
+
