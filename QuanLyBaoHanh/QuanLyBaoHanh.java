@@ -25,9 +25,12 @@ public class QuanLyBaoHanh extends BaoHanh {
         DSBH.add(baoHanh);
     }
 
-        public void Search_byCategory() {
+    public void Search_byCategory() {
         ArrayList<BaoHanh> result = new ArrayList<>();
-
+//        LocalDate _ngay1;
+//        LocalDate _ngay2;
+//        int _tong1;
+//        int _tong2;
         System.out.println("Nhập mục lục cần tìm kiếm: ");
         System.out.println("1.Mã khách hàng");
         System.out.println("2.Số điện thoại");
@@ -69,23 +72,30 @@ public class QuanLyBaoHanh extends BaoHanh {
             }
         });
 
-        String header = String.format("%s %15s %15s %15s", "Ngày mua", "Số năm bảo hành", "Mã khách hàng", "Số điện thoại");
+        System.out.println("----------------------------------------------------------------------");
+        String header = String.format("%s   |%15s | %15s | %15s |", "Mã khách hàng", "Số năm bảo hành", "Số điện thoại", "Ngày mua");
         System.out.println(header);
         for(BaoHanh DSBH : result) {
-            String row = String.format("%s %15s %15s %15s", DSBH.getNgayMua(), DSBH.getSoNamBaoHanh(), DSBH.getID_Customer(),
+            System.out.println("----------------------------------------------------------------------");
+
+            String row = String.format("%s \t\t\t\t| %s \t\t\t | %15s | %15s |", DSBH.getID_Customer(), DSBH.getSoNamBaoHanh(), DSBH.getPhoneNumber(),
                     DSBH.getPhoneNumber());
             System.out.println(row);
         }
+        System.out.println("----------------------------------------------------------------------");
     }
-    
+
     public void Output() {
-        System.out.print("Danh sách phiếu bảo hành của khách hàng:");
-        String header = String.format("%s %15s %15s %15s", "Ngày mua", "Số năm bảo hành", "Mã khách hàng", "SDT khách hàng");
+        System.out.print("Danh sách phiếu bảo hành của khách hàng: \n");
+        System.out.println("----------------------------------------------------------------------");
+        String header = String.format("%s   |%15s | %15s | %15s |", "Mã khách hàng", "Số năm bảo hành", "Số điện thoại", "Ngày mua");
         System.out.println(header);
         for(BaoHanh DSBH : DSBH) {
-            String row = String.format("%s %15s %15s %15s ",DSBH.getNgayMua(),DSBH.getSoNamBaoHanh(),DSBH.getID_Customer(),
-                    DSBH.getPhoneNumber());
+            System.out.println("----------------------------------------------------------------------");
+            String row = String.format("%s \t\t\t\t| %s \t\t\t | %15s | %15s |", DSBH.getID_Customer(), DSBH.getSoNamBaoHanh(), DSBH.getPhoneNumber(),
+                    DSBH.getNgayMua());
             System.out.println(row);
         }
+        System.out.println("----------------------------------------------------------------------");
     }
 }
