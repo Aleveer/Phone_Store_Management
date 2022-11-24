@@ -1,4 +1,4 @@
-//Note: Sản phẩm lỗi, Bán hàng lỗi
+
 //Cần Chỉnh Sửa: Chi tiết sản phẩm
 
 package Menu;
@@ -90,11 +90,11 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t |0.Quay Lại Menu Chính    |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         //System.out.println("\t\t\t\t\t\t\t\t |1.Dạo Quanh Cửa Hàng     |");
-        System.out.println("\t\t\t\t\t\t\t\t |1.Nhập Hóa Đơn                |");
-        System.out.println("\t\t\t\t\t\t\t\t |2.Xóa Hóa Đơn                |");
-        System.out.println("\t\t\t\t\t\t\t\t |3.Sửa Hóa Đơn                |");
-        System.out.println("\t\t\t\t\t\t\t\t |4.Tìm kiếm Hóa Đơn                |");
-        System.out.println("\t\t\t\t\t\t\t\t |5.Xuất Hóa Đơn                |");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Nhập Hóa Đơn           |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Xuất Hóa Đơn            |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Tìm kiếm Hóa Đơn            |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Xóa Hóa Đơn       |");
+        System.out.println("\t\t\t\t\t\t\t\t |5.Sửa Hóa Đơn           |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
 
@@ -293,19 +293,19 @@ public class Menu {
                                 }
                                 case 2 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Hóa Đơn---");
-                                    hd.Delete();
+                                    hd.Output();
                                 }
                                 case 3 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Hóa Đơn---");
-                                    hd.Update();
+                                    hd.Search_byCategory();
                                 }
                                 case 4 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm Kiếm Hóa Đơn---");
-                                    hd.Search_byCategory();
+                                    hd.Delete();
                                 }
                                 case 5 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất Hóa Đơn-----\n");
-                                    hd.Output();
+                                    hd.Update();
                                 }
                             }
                         } while (flag != 0);
@@ -337,7 +337,6 @@ public class Menu {
                                 case 4 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
                                     sp.Delete();
-                                    cfg.Delete();
                                 }
                                 case 5 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Sửa Thông Tin Sản Phẩm-(ID)-----\n");
@@ -364,6 +363,7 @@ public class Menu {
                                 }
                                 case 2 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất chi tiết sản phẩm-----\n");
+                                    
                                     sp.Output();
                                     cfg.Output();
                                 }
