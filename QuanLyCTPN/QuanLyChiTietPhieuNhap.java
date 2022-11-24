@@ -144,23 +144,30 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
                 }
         );
 
-        String header = String.format("%s %15s %15s %15s", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
+        System.out.println("---------------------------------------------------------------------");
+        String header = String.format("%s | %15s | %15s | %15s |", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
         System.out.println(header);
-        for(ChiTietPhieuNhap DSCTPN : result) {
-            String row = String.format("%s %15s %15s %15s ",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
+        for(ChiTietPhieuNhap DSCTPN : DSCTPN) {
+            System.out.println("---------------------------------------------------------------------");
+            String row = String.format("%s \t\t\t  | %15s | %15s | %15s |",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
                     DSCTPN.getPrice());
             System.out.println(row);
         }
+        System.out.println("---------------------------------------------------------------------");
     }
 
     public void Output() {
-        System.out.println("Danh sách phiếu nhập");
-        String header = String.format("%s %15s %15s %15s", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
+        System.out.println("Danh sách phiếu nhập \n");
+        System.out.println("---------------------------------------------------------------------");
+        String header = String.format("%s | %15s | %15s | %15s |", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
         System.out.println(header);
         for(ChiTietPhieuNhap DSCTPN : DSCTPN) {
-            String row = String.format("%s %15s %15s %15s ",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
+            System.out.println("---------------------------------------------------------------------");
+            String row = String.format("%s \t\t\t  | %15s | %15s | %15s |",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
                     DSCTPN.getPrice());
             System.out.println(row);
         }
+        System.out.println("---------------------------------------------------------------------");
+
     }
 }
