@@ -1,15 +1,15 @@
-package Product_center;
+package QuanLySanPham;
 
-public class Product {
+public class SanPham {
     private Integer ID_Product, ID_Typeofproduct, Amount, Amount_remaining;
     private float Price;
     private String Name, Status;
 
-    public Product(){
+    public SanPham(){
         super();
     }
 
-    public Product(String Name, Integer ID_Product, Integer ID_Typeofproduct, Integer Amount, Integer Amount_remaining, float Price, String Status){
+    public SanPham(String Name, Integer ID_Product, Integer ID_Typeofproduct, Integer Amount, Integer Amount_remaining, float Price, String Status){
         super();
         this.Name = Name;
         this.ID_Product = ID_Product;

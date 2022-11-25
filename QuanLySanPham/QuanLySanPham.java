@@ -1,11 +1,11 @@
-package Product_center;
+package QuanLySanPham;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class QuanLySanPham extends Product {
-    public ArrayList<Product> DSLSP = new ArrayList<>();
+public class QuanLySanPham extends SanPham {
+    public ArrayList<SanPham> DSLSP = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
     public void Add() {
         input.nextLine();
@@ -31,7 +31,7 @@ public class QuanLySanPham extends Product {
         System.out.print("Nhập tình trạng: ");
         setStatus(input.nextLine());
 
-        Product product = new Product(getName(), getID_Product(), getID_Typeofproduct(), getAmount(), getAmount_remaining(), getPrice(), getStatus());
+        SanPham product = new SanPham(getName(), getID_Product(), getID_Typeofproduct(), getAmount(), getAmount_remaining(), getPrice(), getStatus());
         DSLSP.add(product);
     }
 
@@ -39,9 +39,9 @@ public class QuanLySanPham extends Product {
         try {
             System.out.print("Nhập mã sản phẩm cần update: ");
             Integer ID_Product = input.nextInt();
-            Product ID_Product_cur = null;
+            SanPham ID_Product_cur = null;
 
-            for (Product product : DSLSP) {
+            for (SanPham product : DSLSP) {
                 if (product.getID_Product().equals(ID_Product)) {
                     ID_Product_cur = product;
                     break;
@@ -60,7 +60,7 @@ public class QuanLySanPham extends Product {
             String row = String.format("%s %10s %10s %10s %15s %15s %15s", ID_Product_cur.getName(), ID_Product_cur.getID_Product(), ID_Product_cur.getID_Typeofproduct(), ID_Product_cur.getAmount(), ID_Product_cur.getAmount_remaining(), ID_Product_cur.getPrice(), ID_Product_cur.getStatus());
             System.out.println(row);
 
-            for (Product product : DSLSP) {
+            for (SanPham product : DSLSP) {
                 if (ID_Product.equals(product.getID_Product())) {
                     System.out.print("Nhập ID loại sản phẩm: ");
                     setID_Typeofproduct(input.nextInt());
@@ -96,8 +96,8 @@ public class QuanLySanPham extends Product {
         System.out.println("Enter ID to delete: ");
         Integer ID_Product = input.nextInt();
 
-        Product cur_product = null;
-        for (Product product : DSLSP) {
+        SanPham cur_product = null;
+        for (SanPham product : DSLSP) {
             if (product.getID_Product().equals(ID_Product)) {
                 cur_product = product;
                 break;
@@ -115,7 +115,7 @@ public class QuanLySanPham extends Product {
     }
 
     public void Search_byCategory() {
-        ArrayList<Product> result = new ArrayList<>();
+        ArrayList<SanPham> result = new ArrayList<>();
         System.out.println("Nhập mục lục cần tìm kiếm: ");
         System.out.println("1.ID Product");
         System.out.println("2.ID Typeofproduct");
@@ -181,7 +181,7 @@ public class QuanLySanPham extends Product {
         System.out.print("List Product:");
         String header = String.format("%s %15s %15s %15s %15s %15s", "ID Product", "Name", "Amount", "Amount remaining", "Price", "Status");
         System.out.println(header);
-        for (Product DSLSP : result) {
+        for (SanPham DSLSP : result) {
             String row = String.format("%d %15s %15d %15d %15s %15s", DSLSP.getID_Product(), DSLSP.getName(), DSLSP.getAmount(), DSLSP.getAmount_remaining(),
                     DSLSP.getPrice(), DSLSP.getStatus());
             System.out.println(row);
@@ -192,7 +192,7 @@ public class QuanLySanPham extends Product {
         System.out.println("List Product:");
         String header = String.format("%s %15s %15s %15s %15s %15s", "ID Product", "Name", "Amount", "Amount remaining", "Price", "Status");
         System.out.println(header);
-        for (Product DSLSP : DSLSP) {
+        for (SanPham DSLSP : DSLSP) {
             String row = String.format("%d %15s %15d %15d %15s %15s", DSLSP.getID_Product(), DSLSP.getName(), DSLSP.getAmount(), DSLSP.getAmount_remaining(),
                     DSLSP.getPrice(), DSLSP.getStatus());
             System.out.println(row);

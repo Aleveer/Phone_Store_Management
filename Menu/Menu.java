@@ -3,12 +3,11 @@
 
 package Menu;
 
-import Product_center.Configuation;
-import Product_center.QuanLySanPham;
+import Configurations.Configuation;
+import QuanLySanPham.QuanLySanPham;
 import QuanLyBaoHanh.QuanLyBaoHanh;
 import QuanLyCTPN.QuanLyChiTietPhieuNhap;
 import QuanLyKhachHang.QuanLyKhachHang;
-import QuanLyNCC.NhaCungCap;
 import QuanLyNCC.QuanLyNhaCungCap;
 import QuanLyNhanVien.QuanLyNhanVien;
 import Receipt.QuanLyHoaDon;
@@ -23,7 +22,7 @@ public class Menu {
     QuanLySanPham sp = new QuanLySanPham();
     QuanLyHoaDon hd = new QuanLyHoaDon();
     QuanLyBaoHanh bh = new QuanLyBaoHanh();
-    Product_center.Configuation cfg = new Configuation();
+    Configurations.Configuation cfg = new Configuation();
     QuanLyCTPN.QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap();
     QuanLyNCC.QuanLyNhaCungCap ncc = new QuanLyNhaCungCap();
 
@@ -35,9 +34,9 @@ public class Menu {
         QuanLyKhachHang kh = new QuanLyKhachHang();
         QuanLyNhanVien nv = new QuanLyNhanVien();
         QuanLySanPham sp = new QuanLySanPham();
-        QuanLyHoaDon hd = new QuanLyHoaDon();
+        QuanLyHoaDon hd = new QuanLyHoaDon(); 
         QuanLyBaoHanh bh = new QuanLyBaoHanh();
-        Product_center.Configuation cfg = new Configuation();
+        Configurations.Configuation cfg = new Configuation();
         QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap();
         QuanLyNCC.QuanLyNhaCungCap ncc = new QuanLyNhaCungCap();
 
@@ -97,7 +96,6 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t |5.Sửa Hóa Đơn           |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
-
     }
 
     public void showmenustorage() {

@@ -12,7 +12,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
     @Override
     public void Add() {
-        System.out.println("Nhập thông tin khách hàng:");
+        System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN KHÁCH HÀNG----+");
         super.Add();
 
         System.out.print("Nhập ID khách hàng: ");
@@ -28,7 +28,8 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
     public void Update() {
         try {
-            System.out.print("Nhập ID khách hàng cần chỉnh sửa: ");
+            System.out.println("\t\t\t\t\t\t\t\t +----CẬP NHẬT LẠI THÔNG TIN KHÁCH HÀNG----+");
+            System.out.print("\t\t\t\t\t\t\t\t - Mời bạn nhập mã khách hàng cần chỉnh sửa: ");
             Integer ID_Khachhang = input.nextInt();
             Khachhang k_hang = null;
 
@@ -40,15 +41,19 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             }
 
             if (k_hang == null) {
-                System.out.println("ID khách hàng không tồn tại!");
+                System.out.println("Mã khách hàng không tồn tại!");
                 return;
             }
 
-            System.out.println("Thông tin khách hàng: ");
-            String row = String.format("%s %15s %15s %15s %50s %40s %10s %11s", k_hang.getName(), k_hang.getAge(), k_hang.getGender(),
+            System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN KHÁCH HÀNG TRƯỚC KHI CHỈNH SỬA----+");
+            String header = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+                    "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
+            System.out.println(header);
+
+            String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+                    k_hang.getName(), k_hang.getAge(), k_hang.getGender(),
                     k_hang.getAddress(), k_hang.getEmail(), k_hang.getID_Customer(), k_hang.getKindOfCustomer(), k_hang.getPhoneNumber());
             System.out.println(row);
-
             for (Khachhang khachhang : DSKH) {
                 if (ID_Khachhang.equals(khachhang.getID_Customer())) {
                     System.out.println("Nhập thông tin khách hàng:");
@@ -76,7 +81,8 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
     public void Delete() {
         try {
-            System.out.print("Nhập ID khách hàng cần xóa: ");
+            System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN KHÁCH HÀNG----+");
+            System.out.println("\t\t\t\t\t\t\t\t Nhập mã khách hàng cần xóa: ");
             Integer ID_Khachhang = input.nextInt();
             Khachhang k_hang = null;
 
@@ -88,7 +94,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             }
 
             if (k_hang == null) {
-                System.out.println("ID khách hàng không tồn tại. Xin vui lòng nhập lại!");
+                System.out.println("Mã khách hàng không tồn tại!");
                 return;
             }
 
@@ -106,64 +112,72 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
     public void Search_byCategory() {
         ArrayList<Khachhang> result = new ArrayList<>();
-        System.out.println("Nhập mục lục cần tìm kiếm: ");
-        System.out.println("1.Mã khách hàng");
-        System.out.println("2.Tên khách hàng");
-        System.out.println("3.Địa chỉ khách hàng");
-        System.out.println("4.Số điện thoại khách hàng");
+        System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
+        System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Mã khách hàng                          |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Tên khách hàng                         |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Địa chỉ khách hàng                     |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Số điện thoại khách hàng               |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
         int choose = input.nextInt();
-
-        DSKH.forEach((khachhang) -> {
-            switch (choose) {
-                case 1 -> {
-                    System.out.print("Nhập ID khách hàng: ");
-                    int ID_Customer = input.nextInt();
-                    if (ID_Customer == khachhang.getID_Customer()) {
-                        result.add(khachhang);
+        if (choose == 0) return; else {
+            DSKH.forEach((khachhang) -> {
+                switch (choose) {
+                    case 1 -> {
+                        System.out.print("Nhập mã khách hàng: ");
+                        int ID_Customer = input.nextInt();
+                        if (ID_Customer == khachhang.getID_Customer()) {
+                            result.add(khachhang);
+                        }
+                    }
+                    case 2 -> {
+                        input.nextLine();
+                        System.out.print("Nhập tên khách hàng: ");
+                        String nameCustomer = input.nextLine();
+                        if (khachhang.getName().toLowerCase().contains(nameCustomer.toLowerCase())) {
+                            result.add(khachhang);
+                        }
+                    }
+                    case 3 -> {
+                        input.nextLine();
+                        System.out.print("Nhập địa chỉ của khách hàng: ");
+                        String address = input.nextLine();
+                        if (khachhang.getAddress().toLowerCase().contains(address.toLowerCase())) {
+                            result.add(khachhang);
+                        }
+                    }
+                    case 4 -> {
+                        input.nextLine();
+                        System.out.print("Nhập số điện thoại của khách hàng: ");
+                        String phoneNumber = input.nextLine();
+                        if (khachhang.getPhoneNumber().toLowerCase().contains(phoneNumber.toLowerCase())) {
+                            result.add(khachhang);
+                        }
                     }
                 }
-                case 2 -> {
-                    input.nextLine();
-                    System.out.print("Nhập tên khách hàng: ");
-                    String nameCustomer = input.nextLine();
-                    if (khachhang.getName().toLowerCase().contains(nameCustomer.toLowerCase())) {
-                        result.add(khachhang);
-                    }
-                }
-                case 3 -> {
-                    input.nextLine();
-                    System.out.print("Nhập địa chỉ của khách hàng: ");
-                    String address = input.nextLine();
-                    if (khachhang.getAddress().toLowerCase().contains(address.toLowerCase())) {
-                        result.add(khachhang);
-                    }
-                }
-                case 4 -> {
-                    input.nextLine();
-                    System.out.print("Nhập số điện thoại của khách hàng: ");
-                    String phoneNumber = input.nextLine();
-                    if (khachhang.getPhoneNumber().toLowerCase().contains(phoneNumber.toLowerCase())) {
-                        result.add(khachhang);
-                    }
-                }
-            }
-        });
-
-        String header = String.format("%s %15s %15s %15s %50s %40s %10s %11s", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "ID Khách hàng", "Loại khách hàng", "Số điện thoại");
+            });
+        }
+        System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN KHÁCH HÀNG TÌM ĐƯỢC----+");
+        String header = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+                "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
         System.out.println(header);
+
         for (Khachhang DSKH : result) {
-            String row = String.format("%s %15s %15s %15s %50s %40s %10s %5s %11s",DSKH.getName(), DSKH.getID_Customer(), DSKH.getAge(), DSKH.getGender(),
-                    DSKH.getAddress(), DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
+            String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",DSKH.getName(), DSKH.getAge(), DSKH.getGender(), DSKH.getAddress(),
+                    DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
             System.out.println(row);
         }
     }
     public void Output() {
-        System.out.println("Danh sách khách hàng:");
-        String header = String.format("%s %15s %15s %15s %50s %40s %10s %11s", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "ID Khách hàng", "Loại khách hàng", "Số điện thoại");
+        System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH KHÁCH HÀNG----+");
+        String header = String.format("|\t\t%s\t\t\t|\t\t%s\t\t\t|\t\t%s\t\t|\t\t\t\t\t\t%s\t\t\t\t\t\t|\t\t\t\t%s\t\t\t\t|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|",
+                "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
         System.out.println(header);
         for (Khachhang DSKH : DSKH) {
-            String row = String.format("%s %15s %15s %15s %50s %40s %10s %11s", DSKH.getName(), DSKH.getAge(), DSKH.getGender(),
-                    DSKH.getAddress(), DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
+            String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",DSKH.getName(), DSKH.getAge(), DSKH.getGender(), DSKH.getAddress(),
+                    DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
             System.out.println(row);
         }
     }

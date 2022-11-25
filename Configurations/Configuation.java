@@ -1,4 +1,4 @@
-package Product_center;
+package Configurations;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -8,7 +8,6 @@ public class Configuation{
     private String Screen, OS, Chip, Ram, Memory, Battery, FrontCamera, RearCamera;
     private Integer ID_Product;
     public Configuation() {
-
     }
 
     public Configuation(Integer ID_Product, String Screen, String OS, String Chip, String Ram, String Memory, String Battery, String FrontCamera, String RearCamera) {
@@ -94,43 +93,35 @@ public class Configuation{
         this.RearCamera = RearCamera;
     }
 
-    public ArrayList<Configuation> DSCH = new ArrayList<Configuation>();
+    public ArrayList<Configuation> DSCH = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
     public void Add() {
-
-        input.nextLine();
-        System.out.print("Nhập ID_Product: ");
+        System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN CẤU HÌNH SẢN PHẨM----+");
+        System.out.print("Nhập mã sản phẩm: ");
         setID_Product(input.nextInt());
 
         input.nextLine();
         System.out.print("Nhập Screen: ");
-        setScreen(input.nextLine());
+        setScreen(String.valueOf((input.nextLine())));
 
-        input.nextLine();
         System.out.print("Nhập OS: ");
         setOS(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Chip: ");
         setChip(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Ram: ");
         setRam(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Memory: ");
         setMemory(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Battery: ");
         setBattery(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Front Camera: ");
         setFrontCamera(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập Rear Camera: ");
         setRearCamera(input.nextLine());
 
@@ -140,7 +131,8 @@ public class Configuation{
 
     public void Update() {
         try {
-            System.out.print("Nhập mã sản phẩm cần update cấu hinnh: ");
+            System.out.println("\t\t\t\t\t\t\t\t +----CẬP NHẬT LẠI THÔNG TIN CẤU HÌNH SẢN PHẨM----+");
+            System.out.print("\t\t\t\t\t\t\t\t - Mời bạn nhập mã sản phẩm cần chỉnh sửa: ");
             Integer ID_Product = input.nextInt();
             Configuation ID_Product_cur = null;
 
@@ -152,15 +144,17 @@ public class Configuation{
             }
 
             if(ID_Product_cur == null) {
-                System.out.println("Mã sản phẩm không tồn tại!");
+                System.out.println("\t\t\t\t\t\t\t\t - Mã Sản Phẩm Bạn Vừa Nhập Không Tồn Tại!");
                 return;
             }
 
-            System.out.println("Thông tin sản phẩm: ");
-            String header = String.format("%s %15s %15s %15s %15s %15s %15s  %15s %15s", "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
+            System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN CẤU HÌNH TRƯỚC KHI CHỈNH SỬA----+");
+            String header = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+             "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
             System.out.println(header);
 
-            String row = String.format("%d %15s %15s %15s %15s %15s %15s %15s %15s", ID_Product_cur.getID_Product(), ID_Product_cur.getScreen(), ID_Product_cur.getOS(), ID_Product_cur.getChip(), ID_Product_cur.getRam(),
+            String row = String.format("|\t\t%s\t\t\t|\t%s\t\t|\t%s|\t\t%s\t\t|\t%s\t|\t%s\t\t|\t%s\t|\t\t%s\t\t\t|\t\t%s\t\t" + "|",
+             ID_Product_cur.getID_Product(), ID_Product_cur.getScreen(), ID_Product_cur.getOS(), ID_Product_cur.getChip(), ID_Product_cur.getRam(),
                     ID_Product_cur.getMemory(), ID_Product_cur.getBattery(), ID_Product_cur.getFrontCamera(), ID_Product_cur.getRearCamera());
             System.out.println(row);
 
@@ -168,7 +162,7 @@ public class Configuation{
                 if (ID_Product.equals(config.getID_Product())) {
                     input.nextLine();
                     System.out.print("Nhập Screen: ");
-                    setScreen(input.nextLine());
+                    setScreen(String.valueOf(input.nextLine()));
 
                     System.out.print("Nhập OS: ");
                     setOS(input.nextLine());
@@ -209,7 +203,8 @@ public class Configuation{
     }
 
     public void Delete() {
-        System.out.println("Enter ID to delete: ");
+        System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN CẤU HÌNH SẢN PHẨM----+");
+        System.out.println("\t\t\t\t\t\t\t\t Nhập mã sản phẩm cần xóa: ");
         Integer ID_Product = input.nextInt();
 
         Configuation cur_product = null;
@@ -220,7 +215,7 @@ public class Configuation{
             }
         }
         if (cur_product == null) {
-            System.out.println("Wrong ID");
+            System.out.println("\t\t\t\t\t\t\t\t - Mã Sản Phẩm Bạn Vừa Nhập Không Tồn Tại!");
         } else {
             for (int i = 0; i < DSCH.size(); i++) {
                 if (ID_Product.equals(DSCH.get(i).getID_Product())) {
@@ -232,17 +227,24 @@ public class Configuation{
 
     public void Search_byCategory() {
         ArrayList<Configuation> result = new ArrayList<Configuation>();
-        System.out.println("Nhập mục lục cần tìm kiếm: ");
-        System.out.println("1.ID Product");
-        System.out.println("2.Screen");
-        System.out.println("3.OS");
-        System.out.println("4.Chip");
-        System.out.println("5.Ram");
-        System.out.println("6.Memory");
-        System.out.println("7.Battery");
-        System.out.println("8.Front Camera");
-        System.out.println("9.Rear Camera");
+        System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
+        System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Mã sản phẩm                            |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Màn hình                               |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Hệ điều hành                           |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Cấu hình chip                          |");
+        System.out.println("\t\t\t\t\t\t\t\t |5.RAM                                    |");
+        System.out.println("\t\t\t\t\t\t\t\t |6.Bộ nhớ (ROM)                           |");
+        System.out.println("\t\t\t\t\t\t\t\t |7.Dung lượng pin                         |");
+        System.out.println("\t\t\t\t\t\t\t\t |8.Số pixel Camera trước                  |");
+        System.out.println("\t\t\t\t\t\t\t\t |9.Số pixel Camera sau                    |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
         int choose = input.nextInt();
+        if (choose == 0)
+            return;
+        else {
         DSCH.forEach((config) -> {
                     switch (choose) {
                         case 1 -> {
@@ -319,29 +321,32 @@ public class Configuation{
                         }
                     }
                 }
-        );
-
-        System.out.print("List Product:");
-        String header = String.format("%s %15s %15s %15s %15s %15s %15s  %15s %15s", "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
-        System.out.println(header);
-        for (Configuation DSCH : result) {
-            String row = String.format("%d %15s %15s %15s %15s %15s %15s %15s %15s", DSCH.getID_Product(), DSCH.getScreen(), DSCH.getOS(), DSCH.getChip(), DSCH.getRam(),
-                    DSCH.getMemory(), DSCH.getBattery(), DSCH.getFrontCamera(), DSCH.getRearCamera());
-            System.out.println(row);
+            );
         }
+        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN ĐÃ TÌM ĐƯỢC----+");
+        String header = String.format("|\t\t%s\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+                "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
+        System.out.println(header);
+            for (Configuation DSCH : result) {
+                String row = String.format("|\t\t%s\t\t\t\t|\t%s\t\t|\t%s|\t\t%s\t\t|\t%s\t|\t%s\t\t|\t%s\t|\t\t%s\t\t\t|\t\t%s\t\t" + "|",
+                DSCH.getID_Product(), DSCH.getScreen(), DSCH.getOS(), DSCH.getChip(), DSCH.getRam(),
+                        DSCH.getMemory(), DSCH.getBattery(), DSCH.getFrontCamera(), DSCH.getRearCamera());
+                System.out.println(row);
+            }
+        System.out.println("+----------------------------------------------------------------------+");
     }
 
     public void Output() {
-        System.out.println("List Config:");
-        String header = String.format("%s %15s %15s %15s %15s %15s %15s  %15s %15s", "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
+        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN CẤU HÌNH SẢN PHẨM----+");
+        String header = String.format("|\t\t%s\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
+                "ID Product", "Screen", "OS", "Chip", "Ram", "Memory", "Battery", "Front Camera", "Rear Camera");
         System.out.println(header);
-        for (Configuation DSCH : DSCH) {
-            String row = String.format("%d %15s %15s %15s %15s %15s %15s %15s %15s", DSCH.getID_Product(), DSCH.getScreen(), DSCH.getOS(), DSCH.getChip(), DSCH.getRam(),
-                    DSCH.getMemory(), DSCH.getBattery(), DSCH.getFrontCamera(), DSCH.getRearCamera());
-            System.out.println(row);
-        }
+            for (Configuation DSCH : DSCH) {
+                String row = String.format("|\t\t%s\t\t\t|\t%s\t\t|\t%s|\t\t%s\t\t|\t%s\t|\t%s\t\t|\t%s\t|\t\t%s\t\t\t|\t\t%s\t\t" + "|",
+                DSCH.getID_Product(), DSCH.getScreen(), DSCH.getOS(), DSCH.getChip(), DSCH.getRam(),
+                        DSCH.getMemory(), DSCH.getBattery(), DSCH.getFrontCamera(), DSCH.getRearCamera());
+                System.out.println(row);
+            }
+        System.out.println("+----------------------------------------------------------------------+");
     }
 }
-
-
-

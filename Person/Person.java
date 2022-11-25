@@ -82,11 +82,9 @@ public class Person {
             System.out.print("Nhập địa chỉ: ");
             setAddress(input.nextLine());
 
-            input.nextLine();
             System.out.print("Nhập Email: ");
             setEmail(input.nextLine());
 
-            input.nextLine();
             System.out.print("Nhập số điện thoại: ");
             setPhoneNumber(input.nextLine());
 

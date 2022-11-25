@@ -9,7 +9,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
     static Scanner input = new Scanner(System.in);
 
     public void Add() {
-        input.nextLine();
+        System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN PHIẾU NHẬP----+");
         System.out.print("Nhập ID phiếu nhập: ");
         setID_PhieuNhap(input.nextInt());
 
@@ -28,7 +28,8 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
 
     public void Update() {
         try {
-            System.out.print("Nhập mã phiếu nhập cần update: ");
+            System.out.println("\t\t\t\t\t\t\t\t +----CẬP NHẬT THÔNG TIN VỀ BẢO HÀNH----+");
+            System.out.print("\t\t\t\t\t\t\t\t - Mời bạn nhập mã phiếu nhập cần chỉnh sửa: ");
             Integer ID_PhieuNhap = input.nextInt();
             ChiTietPhieuNhap ctp_nhap = null;
 
@@ -40,16 +41,16 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             }
 
             if(ctp_nhap == null) {
-                System.out.println("Mã phiếu nhập không tồn tại!");
+                System.out.println("\t\t\t\t\t\t\t\t - Mã phiếu nhập bạn vừa nhập không tồn tại!");
                 return;
             }
 
-            System.out.println("Thông tin phiếu nhập: ");
-            String header = String.format("%s %15s %15s %15s", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
+            System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN PHIẾU NHẬP TRƯỚC KHI CHỈNH SỬA----+");
+            String header = String.format("|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|",
+                    "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
             System.out.println(header);
-
-            String row = String.format("%s %10s %10s %10s ", ctp_nhap.getID_PhieuNhap(), ctp_nhap.getID_Product(), ctp_nhap.getAmount(),
-                    ctp_nhap.getPrice());
+            String row = String.format("|\t\t%s\t\t\t\t\t|\t\t\t%s\t\t|\t\t\t%s\t\t|\t\t%s\t\t|",
+                    ctp_nhap.getID_PhieuNhap(), ctp_nhap.getID_Product(), ctp_nhap.getAmount(), ctp_nhap.getPrice());
             System.out.println(row);
 
             for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
@@ -79,7 +80,8 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
 
     public void Delete() {
         try {
-            System.out.print("Nhập ID phiếu nhập cần xóa: ");
+            System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN PHIẾU NHẬP----+");
+            System.out.print("Nhập mã phiếu nhập cần xóa: ");
             Integer ID_Phieunhap = input.nextInt();
             ChiTietPhieuNhap ctp_nhap = null;
 
@@ -91,7 +93,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             }
 
             if(ctp_nhap == null) {
-                System.out.println("ID phiếu nhập không tồn tại.");
+                System.out.println("Mã phiếu nhập không tồn tại!");
                 return;
             }
 
@@ -109,47 +111,52 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
 
     public void Search_byCategory() {
         ArrayList<ChiTietPhieuNhap> result = new ArrayList<>();
-        System.out.println("Nhập mục lục cần tìm kiếm: ");
-        System.out.println("1.Mã phiếu nhập");
-        System.out.println("2.Mã sản phẩm");
-        System.out.println("3.Số lượng sản phẩm");
+        System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
+        System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Mã phiếu nhập                          |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Mã sản phẩm                            |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Số lượng sản phẩm                      |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
         int choose = input.nextInt();
-        DSCTPN.forEach((chiTietPhieuNhap) -> {
-                    switch (choose) {
-                        case 1 -> {
-                            input.nextLine();
-                            System.out.print("Nhập mã phiếu nhập: ");
-                            int ID_phieunhap = input.nextInt();
-                            if (ID_phieunhap == chiTietPhieuNhap.getID_PhieuNhap()) {
-                                result.add(chiTietPhieuNhap);
+        if(choose == 0) return; else {
+            DSCTPN.forEach((chiTietPhieuNhap) -> {
+                        switch (choose) {
+                            case 1 -> {
+                                input.nextLine();
+                                System.out.print("Nhập mã phiếu nhập: ");
+                                int ID_phieunhap = input.nextInt();
+                                if (ID_phieunhap == chiTietPhieuNhap.getID_PhieuNhap()) {
+                                    result.add(chiTietPhieuNhap);
+                                }
                             }
-                        }
-                        case 2 -> {
-                            input.nextLine();
-                            System.out.print("Nhập mã sản phẩm: ");
-                            int ID_product = input.nextInt();
-                            if (ID_product == chiTietPhieuNhap.getID_Product()) {
-                                result.add(chiTietPhieuNhap);
+                            case 2 -> {
+                                input.nextLine();
+                                System.out.print("Nhập mã sản phẩm: ");
+                                int ID_product = input.nextInt();
+                                if (ID_product == chiTietPhieuNhap.getID_Product()) {
+                                    result.add(chiTietPhieuNhap);
+                                }
                             }
-                        }
-                        case 3 -> {
-                            System.out.print("Nhập số lượng sản phẩm: ");
-                            input.nextLine();
-                            int amount = input.nextInt();
-                            if (amount == chiTietPhieuNhap.getAmount()) {
-                                result.add(chiTietPhieuNhap);
+                            case 3 -> {
+                                System.out.print("Nhập số lượng sản phẩm: ");
+                                input.nextLine();
+                                int amount = input.nextInt();
+                                if (amount == chiTietPhieuNhap.getAmount()) {
+                                    result.add(chiTietPhieuNhap);
+                                }
                             }
                         }
                     }
-                }
-        );
-
-        System.out.println("---------------------------------------------------------------------");
-        String header = String.format("%s | %15s | %15s | %15s |", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
+            );
+        }
+        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN ĐÃ TÌM ĐƯỢC----+");
+        String header = String.format("|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|",
+                "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
         System.out.println(header);
-        for(ChiTietPhieuNhap DSCTPN : DSCTPN) {
-            System.out.println("---------------------------------------------------------------------");
-            String row = String.format("%s \t\t\t  | %15s | %15s | %15s |",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
+        for(ChiTietPhieuNhap DSCTPN : result) {
+            String row = String.format("|\t\t%s\t\t\t\t\t|\t\t\t%s\t\t|\t\t\t%s\t\t|\t\t%s\t\t|",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
                     DSCTPN.getPrice());
             System.out.println(row);
         }
@@ -157,17 +164,15 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
     }
 
     public void Output() {
-        System.out.println("Danh sách phiếu nhập \n");
-        System.out.println("---------------------------------------------------------------------");
-        String header = String.format("%s | %15s | %15s | %15s |", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
+        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN PHIẾU NHẬP----+");
+        String header = String.format("|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|",
+                "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Giá tiền");
         System.out.println(header);
         for(ChiTietPhieuNhap DSCTPN : DSCTPN) {
-            System.out.println("---------------------------------------------------------------------");
-            String row = String.format("%s \t\t\t  | %15s | %15s | %15s |",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
+            String row = String.format("|\t\t%s\t\t\t\t\t|\t\t\t%s\t\t|\t\t\t%s\t\t|\t\t%s\t\t|",DSCTPN.getID_PhieuNhap(),DSCTPN.getID_Product(),DSCTPN.getAmount(),
                     DSCTPN.getPrice());
             System.out.println(row);
         }
         System.out.println("---------------------------------------------------------------------");
-
     }
 }
