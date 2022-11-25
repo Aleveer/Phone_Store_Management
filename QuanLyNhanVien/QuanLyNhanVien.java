@@ -20,7 +20,6 @@ public class QuanLyNhanVien extends NhanVien implements DataAccessObject {
         input.nextLine();
         setRole(input.nextLine());
 
-        input.nextLine();
         System.out.print("Nhập ca làm việc của nhân viên: ");
         setShift(input.nextLine());
 
@@ -30,7 +29,7 @@ public class QuanLyNhanVien extends NhanVien implements DataAccessObject {
 
     public void Update() {
         try {
-            System.out.print("Nhập ID nhân viên cần chỉnh sửa: ");
+            System.out.print("Nhập mã nhân viên cần chỉnh sửa: ");
             Integer ID_NhanVien = input.nextInt();
             NhanVien n_vien = null;
 
@@ -42,7 +41,7 @@ public class QuanLyNhanVien extends NhanVien implements DataAccessObject {
             }
 
             if(n_vien == null) {
-                System.out.println("ID nhân viên không tồn tại. Xin vui lòng nhập lại!");
+                System.out.println("ID nhân viên không tồn tại.");
                 return;
             }
 
