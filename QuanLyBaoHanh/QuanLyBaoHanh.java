@@ -27,15 +27,15 @@ public class QuanLyBaoHanh extends BaoHanh {
 
     public void Search_byCategory() {
         ArrayList<BaoHanh> result = new ArrayList<>();
-//        LocalDate _ngay1;
-//        LocalDate _ngay2;
-//        int _tong1;
-//        int _tong2;
-        System.out.println("Nhập mục lục cần tìm kiếm: ");
-        System.out.println("1.Mã khách hàng");
-        System.out.println("2.Số điện thoại");
-        System.out.println("3.Số năm bảo hành");
-        System.out.println("4.Ngày mua hàng");
+        System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
+        System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.println("\t\t\t\t\t\t\t\t |1.Mã khách hàng                          |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Số điện thoại                          |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Số năm bảo hành                        |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Ngày mua hàng                          |");
+        System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
+        System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
         int choose = input.nextInt();
         if (choose == 0) return;
         else {
