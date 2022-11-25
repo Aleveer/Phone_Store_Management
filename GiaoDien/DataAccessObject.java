@@ -1,8 +1,8 @@
 package GiaoDien;
 
 public interface DataAccessObject {
-    void Add();
     void Update();
+    void Add();
     void Delete();
     void Search_byCategory();
 }

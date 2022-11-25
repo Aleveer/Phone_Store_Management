@@ -1,6 +1,8 @@
 package QuanLyKhachHang;
 
 import GiaoDien.DataAccessObject;
+import WorkwithFiles.Stream;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +19,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
     static Scanner input = new Scanner(System.in);
 
     public Khachhang[] getListCustomer() throws FileNotFoundException {
-        String[] result = controller.Stream.read("src/database/customer.txt");
+        String[] result = Stream.read("src/database/customer.txt");
         kh = new Khachhang[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
@@ -75,7 +77,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
         try {
             String input = getID_Customer() + ";" + getName() + ";" + getAge() + ";" + getGender() + ";" + getAddress() + ";" + getEmail() + ";" + getPhoneNumber() + ";" + getKindOfCustomer();
-            controller.Stream.addOneLine("src/database/customer.txt", input);
+            Stream.addOneLine("src/database/customer.txt", input);
             System.out.println("Nhập khách hàng thành công");
             waitConsole();
         } catch (IOException e) {
@@ -133,7 +135,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                 data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
             }
             try {
-                controller.Stream.addAll("src/database/customer.txt", data);
+                Stream.addAll("src/database/customer.txt", data);
                 System.out.println("\t\t\t\t\t\t\t\t----Sửa thông tin khách hàng thành công----");
                 waitConsole();
             } catch (IOException e) {
@@ -176,7 +178,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                     data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
                 }
                 try {
-                    controller.Stream.addAll("src/database/customer.txt", data);
+                    Stream.addAll("src/database/customer.txt", data);
                     System.out.println("Xóa khách hàng thành công");
                     waitConsole();
                 } catch (IOException e) {

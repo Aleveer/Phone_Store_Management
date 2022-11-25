@@ -1,6 +1,6 @@
 package QuanLyNhanVien;
 
-import Person.DataAccessObject;
+import GiaoDien.DataAccessObject;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
