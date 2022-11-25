@@ -484,5 +484,4 @@ public class Menu {
                 }
             } while (flag != 0);
         }
-    }
-
+}
