@@ -2,7 +2,7 @@ package QuanLyKhachHang;
 import Person.Person;
 public class Khachhang extends Person {
     private String ID_Customer;
-    private String  kindOfCustomer;
+    private String kindOfCustomer;
     public Khachhang(String name, String gender, String address, String email, Integer age, String phonenumber, String ID_Customer, String kindOfCustomer) {
         super();
         this.kindOfCustomer = kindOfCustomer;

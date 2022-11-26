@@ -9,7 +9,6 @@ public class PhieuNhap {
     private LocalTime gioNhap;
 
     public PhieuNhap() {
-
         super();
         this.ngayNhap = LocalDate.now();
         this.gioNhap = LocalTime.now();

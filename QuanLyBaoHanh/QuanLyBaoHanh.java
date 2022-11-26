@@ -1,6 +1,8 @@
 package QuanLyBaoHanh;
+import QuanLyKhachHang.Khachhang;
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
 public class QuanLyBaoHanh extends BaoHanh {
@@ -12,23 +14,47 @@ public class QuanLyBaoHanh extends BaoHanh {
         bh = new BaoHanh[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
-            nv[i] = new BaoHanh(row[0], row[1], row[2], row[3], Integer.parseInt(row[4]), row[5], row[6], row[7]);
+            bh[i] = new BaoHanh(row[0], LocalDate.parse(row[1]), Integer.parseInt(row[2]), row[3], row[4], row[5], row[6]);
         }
-        return kh;
+        return bh;
+    }
+    public void waitConsole() {
+        input.nextLine();
+        System.out.println("\t\t\t\t\t\t\t\t -Ấn Enter để tiếp tục");
+        input.nextLine();
+    }
+    public void read() throws FileNotFoundException {
+        System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH BẢO HÀNH----+");
+        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
+        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+        System.out.println(header);
+        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+
+        getListBaoHanh();
+        for (BaoHanh baoHanh : bh) {
+            if (bh[0].getID_Customer().contains("kh")) {
+                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", khachhang.getID_Customer(), khachhang.getName(), khachhang.getAge(),
+                        khachhang.getGender(), khachhang.getAddress(), khachhang.getEmail(), khachhang.getPhoneNumber(), khachhang.getKindOfCustomer());
+                System.out.println(read);
+            }
+        }
+        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+        waitConsole();
     }
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN VỀ BẢO HÀNH----+");
         System.out.print("Nhập số năm bảo hành:");
         setSoNamBaoHanh(input.nextInt());
 
-        System.out.print("Nhập mã khách hàng:");
-        setID_Customer(input.nextInt());
-
         input.nextLine();
+        System.out.print("Nhập mã khách hàng:");
+        setID_Customer(input.nextLine());
+
         System.out.print("Nhập SDT khách hàng:");
         setPhoneNumber(input.nextLine());
 
-        setNgayMua(LocalDate.now());
+        System.out.print("Nhập ngày mua hàng:");
+        setNgayMua(LocalDate.parse(input.nextLine()));
 
         BaoHanh baoHanh = new BaoHanh(getNgayMua(), getSoNamBaoHanh(), getID_Customer(), getPhoneNumber());
         DSBH.add(baoHanh);
