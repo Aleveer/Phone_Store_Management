@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 public class PhieuNhap {
     float Price = 0;
-    private Integer ID_Supplier, ID_Worker, ID_PhieuNhap;
-    private String Name_supplier;
+    private String ID_Supplier, ID_Worker, ID_PhieuNhap, Name_supplier;
     private LocalDate ngayNhap;
     private LocalTime gioNhap;
 
@@ -15,13 +14,13 @@ public class PhieuNhap {
         this.ngayNhap = LocalDate.now();
         this.gioNhap = LocalTime.now();
     }
-    public PhieuNhap(float price, Integer ID_Supplier, Integer ID_Worker, Integer ID_PhieuNhap, String name_supplier, LocalDate ngayNhap, LocalTime gioNhap) {
+    public PhieuNhap(float price, String ID_Supplier, String ID_Worker, String ID_PhieuNhap, String Name_supplier, LocalDate ngayNhap, LocalTime gioNhap) {
         super();
         this.Price = price;
         this.ID_Supplier = ID_Supplier;
         this.ID_Worker = ID_Worker;
         this.ID_PhieuNhap = ID_PhieuNhap;
-        this.Name_supplier = name_supplier;
+        this.Name_supplier = Name_supplier;
         this.ngayNhap = ngayNhap;
         this.gioNhap = gioNhap;
     }
@@ -34,27 +33,27 @@ public class PhieuNhap {
         this.Price = price;
     }
 
-    public Integer getID_Supplier() {
+    public String getID_Supplier() {
         return ID_Supplier;
     }
 
-    public void setID_Supplier(Integer ID_Supplier) {
+    public void setID_Supplier(String ID_Supplier) {
         this.ID_Supplier = ID_Supplier;
     }
 
-    public Integer getID_Worker() {
+    public String getID_Worker() {
         return ID_Worker;
     }
 
-    public void setID_Worker(Integer ID_Worker) {
+    public void setID_Worker(String ID_Worker) {
         this.ID_Worker = ID_Worker;
     }
 
-    public Integer getID_PhieuNhap() {
+    public String getID_PhieuNhap() {
         return ID_PhieuNhap;
     }
 
-    public void setID_PhieuNhap(Integer ID_PhieuNhap) {
+    public void setID_PhieuNhap(String ID_PhieuNhap) {
         this.ID_PhieuNhap = ID_PhieuNhap;
     }
 
@@ -62,8 +61,8 @@ public class PhieuNhap {
         return Name_supplier;
     }
 
-    public void setName_supplier(String name_supplier) {
-        Name_supplier = name_supplier;
+    public void setName_supplier(String Name_supplier) {
+        Name_supplier = Name_supplier;
     }
 
     public LocalDate getNgayNhap() {

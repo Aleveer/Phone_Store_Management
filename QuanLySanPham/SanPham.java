@@ -1,15 +1,15 @@
 package QuanLySanPham;
 
 public class SanPham {
-    private Integer ID_Product, ID_Typeofproduct, Amount, Amount_remaining;
+    private String ID_Product, ID_Typeofproduct, Name, Status;
+    private Integer Amount, Amount_remaining;
     private float Price;
-    private String Name, Status;
 
     public SanPham(){
         super();
     }
 
-    public SanPham(String Name, Integer ID_Product, Integer ID_Typeofproduct, Integer Amount, Integer Amount_remaining, float Price, String Status){
+    public SanPham(String Name, String ID_Product, String ID_Typeofproduct, Integer Amount, Integer Amount_remaining, float Price, String Status){
         super();
         this.Name = Name;
         this.ID_Product = ID_Product;
@@ -27,17 +27,17 @@ public class SanPham {
         this.Name = Name;
     }
 
-    public Integer getID_Product() {
+    public String getID_Product() {
         return ID_Product;
     }
-    public void setID_Product(Integer ID_Product) {
+    public void setID_Product(String ID_Product) {
         this.ID_Product = ID_Product;
     }
 
-    public Integer getID_Typeofproduct() {
+    public String getID_Typeofproduct() {
         return ID_Typeofproduct;
     }
-    public void setID_Typeofproduct(Integer ID_Typeofproduct) {
+    public void setID_Typeofproduct(String ID_Typeofproduct) {
         this.ID_Typeofproduct = ID_Typeofproduct;
     }
 
