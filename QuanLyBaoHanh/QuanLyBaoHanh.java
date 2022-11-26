@@ -1,12 +1,21 @@
 package QuanLyBaoHanh;
-
+import WorkwithFiles.Stream;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
-
 public class QuanLyBaoHanh extends BaoHanh {
-    public ArrayList<BaoHanh> DSBH = new ArrayList<>();
+    public BaoHanh[] bh;
+    public QuanLyBaoHanh() {super();}
     static Scanner input = new Scanner(System.in);
+    public BaoHanh[] getListBaoHanh() throws FileNotFoundException {
+        String[] result = Stream.read("src/DuLieu/insurance.txt");
+        bh = new BaoHanh[result.length];
+        for (int i = 0; i < result.length; i++) {
+            String[] row = result[i].split(";");
+            nv[i] = new BaoHanh(row[0], row[1], row[2], row[3], Integer.parseInt(row[4]), row[5], row[6], row[7]);
+        }
+        return kh;
+    }
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN VỀ BẢO HÀNH----+");
         System.out.print("Nhập số năm bảo hành:");
@@ -24,7 +33,6 @@ public class QuanLyBaoHanh extends BaoHanh {
         BaoHanh baoHanh = new BaoHanh(getNgayMua(), getSoNamBaoHanh(), getID_Customer(), getPhoneNumber());
         DSBH.add(baoHanh);
     }
-
     public void Search_byCategory() {
         ArrayList<BaoHanh> result = new ArrayList<>();
         System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
@@ -86,7 +94,6 @@ public class QuanLyBaoHanh extends BaoHanh {
         }
         System.out.println("+----------------------------------------------------------------------+");
     }
-
     public void Output() {
         System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN VỀ BẢO HÀNH----+");
         String header = String.format("|\t\t%s\t|\t%s\t|\t%s\t\t|\t\t%s\t|",

@@ -1,51 +1,44 @@
 package Receipt;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class ChiTietHoaDon {
     protected Integer ID_Receipt;
     protected Integer ID_Product;
     protected Integer Amount;
     protected Float Price;
-
     public Integer getID_Receipt() {
         return ID_Receipt;
     }
     public void setID_Receipt(Integer ID_Receipt) {
         this.ID_Receipt = ID_Receipt;
     }
-
     public Integer getID_Product() {
         return ID_Product;
     }
     public void setID_Product(Integer ID_Product) {
         this.ID_Product = ID_Product;
     }
-
     public Integer getAmount() {
         return Amount;
     }
     public void setAmount(Integer Amount) {
         this.Amount = Amount;
     }
-
     public Float getPrice() {
         return Price;
     }
     public void setPrice(float Price) {
         this.Price = Price;
     }
-
     public ChiTietHoaDon(Integer ID_Receipt, Integer ID_Product, Integer Amount, Float Price) {
+        super();
         this.ID_Receipt = ID_Receipt;
         this.ID_Product = ID_Product;
         this.Amount = Amount;
         this.Price = Price;
     }
-    public ChiTietHoaDon() {}
-
+    public ChiTietHoaDon() {super();}
     private static final ArrayList<ChiTietHoaDon> CTHD = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
     public void Add() {

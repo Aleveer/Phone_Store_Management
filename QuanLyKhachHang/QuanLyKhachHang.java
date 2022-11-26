@@ -1,25 +1,19 @@
 package QuanLyKhachHang;
-
 import GiaoDien.DataAccessObject;
 import WorkwithFiles.Stream;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
     public Khachhang[] kh;
-
     public QuanLyKhachHang() {
         super();
     }
-
     static Scanner input = new Scanner(System.in);
-
-    public Khachhang[] getListCustomer() throws FileNotFoundException {
-        String[] result = Stream.read("src/database/customer.txt");
+    public Khachhang[] getListKhachhang() throws FileNotFoundException {
+        String[] result = Stream.read("src/DuLieu/customer.txt");
         kh = new Khachhang[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
@@ -27,20 +21,19 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
         }
         return kh;
     }
-
     public void waitConsole() {
         input.nextLine();
-        System.out.println("Ấn Enter để tiếp tục");
+        System.out.println("\t\t\t\t\t\t\t\t -Ấn Enter để tiếp tục");
         input.nextLine();
     }
     public void read() throws FileNotFoundException {
-        System.out.println("Danh sách khách hàng:");
+        System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH KHÁCH HÀNG----+");
         String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         System.out.println(header);
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
 
-        getListCustomer();
+        getListKhachhang();
         for (Khachhang khachhang : kh) {
             if (kh[0].getID_Customer().contains("kh")) {
                 String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", khachhang.getID_Customer(), khachhang.getName(), khachhang.getAge(),
@@ -51,7 +44,6 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         waitConsole();
     }
-
     @Override
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN KHÁCH HÀNG----+");
@@ -67,24 +59,22 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
         }
 
         if (check == 1) {
-            System.out.println("Mã khách hàng bị trùng.");
+            System.out.println("\t\t\t\t\t\t\t\t -MÃ KHÁCH HÀNG BỊ TRÙNG!");
             return;
         }
         super.Add();
-
         System.out.print("Nhập loại khách hàng: ");
         setKindOfCustomer(input.nextLine());
 
         try {
             String input = getID_Customer() + ";" + getName() + ";" + getAge() + ";" + getGender() + ";" + getAddress() + ";" + getEmail() + ";" + getPhoneNumber() + ";" + getKindOfCustomer();
-            Stream.addOneLine("src/database/customer.txt", input);
-            System.out.println("Nhập khách hàng thành công");
+            Stream.addOneLine("src/DuLieu/customer.txt", input);
+            System.out.println("\t\t\t\t\t\t\t\t+----NHẬP KHÁCH HÀNG THÀNH CÔNG----+");
             waitConsole();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public void Update() {
         try {
             System.out.println("\t\t\t\t\t\t\t\t +----CẬP NHẬT LẠI THÔNG TIN KHÁCH HÀNG----+");
@@ -100,14 +90,15 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             }
 
             if (k_hang == null) {
-                System.out.println("Mã khách hàng không tồn tại!");
+                System.out.println("\t\t\t\t\t\t\t\t -MÃ KHÁCH HÀNG KHÔNG TỒN TẠI!");
                 return;
             }
 
             System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN KHÁCH HÀNG TRƯỚC KHI CHỈNH SỬA----+");
-            String header = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
-                    "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
+            String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
             System.out.println(header);
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
 
             String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
                     k_hang.getName(), k_hang.getAge(), k_hang.getGender(),
@@ -117,8 +108,8 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             String[] data = new String[kh.length];
 
             for (int i = 0; i < kh.length; i++) {
-                if (ID_Khachhang.equalsIgnoreCase(getID_Customer())) {
-                    System.out.println("Nhập thông tin khách hàng:");
+                if (ID_Khachhang.equals(getID_Customer())) {
+                    System.out.print("Nhập thông tin khách hàng:");
                     super.Add();
 
                     System.out.print("Nhập loại khách hàng: ");
@@ -135,24 +126,23 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                 data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
             }
             try {
-                Stream.addAll("src/database/customer.txt", data);
-                System.out.println("\t\t\t\t\t\t\t\t----Sửa thông tin khách hàng thành công----");
+                Stream.addAll("src/DuLieu/customer.txt", data);
+                System.out.println("\t\t\t\t\t\t\t\t+----SỬA THÔNG TIN NHÂN VIÊN THÀNH CÔNG----+");
                 waitConsole();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (InputMismatchException ei) {
-            System.out.println("Nhập giá trị không hợp lệ, vui lòng nhập lại!");
+            System.out.println("\t\t\t\t\t\t\t\t GIÁ TRỊ KHÔNG HỢP LỆ. VUI LÒNG NHẬP LẠI!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-
-        public void Delete () {
+    public void Delete () {
             try {
                 System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN KHÁCH HÀNG----+");
-                System.out.println("\t\t\t\t\t\t\t\t Nhập mã khách hàng cần xóa: ");
-                String  ID_Khachhang = input.nextLine();
+                System.out.print("\t\t\t\t\t\t\t\t -Nhập mã khách hàng cần xóa: ");
+                String ID_Khachhang = input.nextLine();
                 Khachhang k_hang = null;
 
                 for (Khachhang khachhang : kh) {
@@ -163,7 +153,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                 }
 
                 if (k_hang == null) {
-                    System.out.println("Mã khách hàng không tồn tại!");
+                    System.out.println("\t\t\t\t\t\t\t\t -MÃ NHÂN VIÊN KHÔNG TỒN TẠI!");
                     return;
                 }
 
@@ -178,19 +168,18 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                     data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
                 }
                 try {
-                    Stream.addAll("src/database/customer.txt", data);
-                    System.out.println("Xóa khách hàng thành công");
+                    Stream.addAll("src/DuLieu/customer.txt", data);
+                    System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN KHÁCH HÀNG THÀNH CÔNG----+");
                     waitConsole();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } catch (InputMismatchException ei) {
-                System.out.println("Nhập giá trị không hợp lệ, vui lòng nhập lại!");
+                System.out.println("\t\t\t\t\t\t\t\t GIÁ TRỊ KHÔNG HỢP LỆ. VUI LÒNG NHẬP LẠI!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-
     public Khachhang[] deleteCustomer(Khachhang[] kh, int index) {
         Khachhang[] newCs = new Khachhang[kh.length - 1];
         for (int i = 0, j = 0; i < kh.length; i++) {
@@ -200,12 +189,11 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
         }
         return newCs;
     }
-        public Khachhang[] addCustomer(Khachhang[] kh, Khachhang khachhang) {
+    public Khachhang[] addCustomer(Khachhang[] kh, Khachhang khachhang) {
             kh = Arrays.copyOf(kh, kh.length + 1);
             kh[kh.length -1] = khachhang;
             return kh;
         }
-
         public void Search_byCategory () {
             Khachhang[] result = new Khachhang[0];
             System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
@@ -220,69 +208,73 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             int choose = input.nextInt();
             if (choose == 0) return;
             else {
-                    switch (choose) {
-                        case 1 -> {
-                            System.out.print("Nhập mã khách hàng: ");
-                            String ID_Customer = input.nextLine();
-                            for (Khachhang khachhang : kh) {
-                                if (ID_Customer.contains(khachhang.getID_Customer())) {
-                                    result = addCustomer(result, khachhang);
-                                }
-                            }
-                        }
-                        case 2 -> {
-                            input.nextLine();
-                            System.out.print("Nhập tên khách hàng: ");
-                            String nameCustomer = input.nextLine();
-                            for(Khachhang khachhang: kh) {
-                                if (khachhang.getName().toLowerCase().contains(nameCustomer.toLowerCase())) {
-                                    result = addCustomer(result, khachhang);
-                                }
-                            }
-                        }
-                        case 3 -> {
-                            input.nextLine();
-                            System.out.print("Nhập địa chỉ của khách hàng: ");
-                            String address = input.nextLine();
-                            for(Khachhang khachhang: kh) {
-                                if (khachhang.getAddress().toLowerCase().contains(address.toLowerCase())) {
-                                    result = addCustomer(result, khachhang);
-                                }
-                            }
-                        }
-                        case 4 -> {
-                            input.nextLine();
-                            System.out.print("Nhập số điện thoại của khách hàng: ");
-                            String phoneNumber = input.nextLine();
-                            for(Khachhang khachhang : kh) {
-                                if (khachhang.getPhoneNumber().toLowerCase().contains(phoneNumber.toLowerCase())) {
-                                    result = addCustomer(result, khachhang);
-                                }
+                switch (choose) {
+                    case 1 -> {
+                        input.nextLine();
+                        System.out.print("Nhập mã khách hàng: ");
+                        String ID_Customer = input.nextLine();
+                        for (Khachhang khachhang : kh) {
+                            if (ID_Customer.contains(khachhang.getID_Customer())) {
+                                result = addCustomer(result, khachhang);
                             }
                         }
                     }
-            }
-            System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN KHÁCH HÀNG TÌM ĐƯỢC----+");
-            String header = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
-                    "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
-            System.out.println(header);
+                    case 2 -> {
+                        input.nextLine();
+                        System.out.print("Nhập tên khách hàng: ");
+                        String nameCustomer = input.nextLine();
+                        for (Khachhang khachhang : kh) {
+                            if (khachhang.getName().toLowerCase().contains(nameCustomer.toLowerCase())) {
+                                result = addCustomer(result, khachhang);
+                            }
+                        }
+                    }
+                    case 3 -> {
+                        input.nextLine();
+                        System.out.print("Nhập địa chỉ của khách hàng: ");
+                        String address = input.nextLine();
+                        for (Khachhang khachhang : kh) {
+                            if (khachhang.getAddress().toLowerCase().contains(address.toLowerCase())) {
+                                result = addCustomer(result, khachhang);
+                            }
+                        }
+                    }
+                    case 4 -> {
+                        input.nextLine();
+                        System.out.print("Nhập số điện thoại của khách hàng: ");
+                        String phoneNumber = input.nextLine();
+                        for (Khachhang khachhang : kh) {
+                            if (khachhang.getPhoneNumber().toLowerCase().contains(phoneNumber.toLowerCase())) {
+                                result = addCustomer(result, khachhang);
+                            }
+                        }
+                    }
+                }
 
-            for (Khachhang DSKH : result) {
+                System.out.println("\t\t\t\t\t\t\t\t +----THÔNG TIN KHÁCH HÀNG TÌM ĐƯỢC----+");
+                String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
+                System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+                System.out.println(header);
+                System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+
+                for (Khachhang DSKH : result) {
+                    String row = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", DSKH.getName(), DSKH.getAge(), DSKH.getGender(), DSKH.getAddress(),
+                            DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
+                    System.out.println(row);
+                    waitConsole();
+                }
+            }
+        }
+        public void Output () {
+            System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH KHÁCH HÀNG----+");
+            String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+            System.out.println(header);
+            for (Khachhang DSKH : kh) {
                 String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|", DSKH.getName(), DSKH.getAge(), DSKH.getGender(), DSKH.getAddress(),
                         DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
                 System.out.println(row);
                 waitConsole();
             }
         }
-        public void Output () {
-            System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH KHÁCH HÀNG----+");
-            String header = String.format("|\t\t%s\t\t\t|\t\t%s\t\t\t|\t\t%s\t\t|\t\t\t\t\t\t%s\t\t\t\t\t\t|\t\t\t\t%s\t\t\t\t|\t\t%s\t\t|\t\t%s\t\t|\t\t%s\t\t|",
-                    "Họ tên khách hàng", "Tuổi", "Giới tính", "Địa chỉ", "Email", "Mã khách hàng", "Loại khách hàng", "SDT");
-            System.out.println(header);
-            for (Khachhang DSKH : kh) {
-                String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|", DSKH.getName(), DSKH.getAge(), DSKH.getGender(), DSKH.getAddress(),
-                        DSKH.getEmail(), DSKH.getID_Customer(), DSKH.getKindOfCustomer(), DSKH.getPhoneNumber());
-                System.out.println(row);
-            }
-    }
 }

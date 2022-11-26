@@ -5,7 +5,6 @@ public class Account {
 	private String Username;
 	private String Password;
 	private String Position;
-	
 	public Account() {
 		super();
 	}

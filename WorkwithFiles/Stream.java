@@ -41,8 +41,8 @@ public class Stream {
 	
 	public static void addAll(String filePath, String[] data) throws IOException {
 		myWriter = new FileWriter(filePath);
-		for(int i = 0; i < data.length; i++) {
-			myWriter.write(data[i] + "\n" );
+		for (String datum : data) {
+			myWriter.write(datum + "\n");
 		}
 		myWriter.close();
 	}

@@ -2,14 +2,12 @@ package QuanLyTaiKhoan;
 
 import GiaoDien.DataAccessObject;
 import WorkwithFiles.Stream;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class AccountManager extends Account implements DataAccessObject {
-	
 	public Account[] acc;
 	public static Scanner input = new Scanner(System.in);
 	public AccountManager() {
