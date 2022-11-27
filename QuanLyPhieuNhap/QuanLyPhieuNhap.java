@@ -1,9 +1,6 @@
 package QuanLyPhieuNhap;
 
-import QuanLySanPham.SanPham;
 import WorkwithFiles.Stream;
-
-import java.beans.Introspector;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -53,6 +50,10 @@ public class QuanLyPhieuNhap extends PhieuNhap {
 
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN PHIẾU NHẬP----+");
+
+        input.nextLine();
+        System.out.print("Nhập ID phiếu nhập:");
+        setID_PhieuNhap(input.nextLine());
         int check = 0;
         for (PhieuNhap phieunhap : DSPN) {
             if (getID_PhieuNhap().equals(phieunhap.getID_PhieuNhap())) {
@@ -70,9 +71,6 @@ public class QuanLyPhieuNhap extends PhieuNhap {
         setPrice(input.nextFloat());
 
         input.nextLine();
-        System.out.print("Nhập ID phiếu nhập:");
-        setID_PhieuNhap(input.nextLine());
-
         System.out.print("Nhập mã của nhà cung cấp:");
         setID_Supplier(input.nextLine());
 
@@ -119,8 +117,6 @@ public class QuanLyPhieuNhap extends PhieuNhap {
             String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Giá Tiền", "Mã Nhà Cung Cấp", "Mã Nhân Viên", "Mã phiếu nhập", "Tên Nhà Cung Cấp", "Ngày Nhập", "Giờ Nhập");
             System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
             System.out.println(header);
-            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
-
             String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
                     p_nhap.getPrice(), p_nhap.getID_Supplier(), p_nhap.getID_Worker(),
                     p_nhap.getID_PhieuNhap(), p_nhap.getName_supplier(), p_nhap.getNgayNhap(), p_nhap.getGioNhap());
@@ -194,7 +190,7 @@ public class QuanLyPhieuNhap extends PhieuNhap {
             }
 
             if (cur_phieunhap == null) {
-                System.out.println("\t\t\t\t\t\t\t\t - MÃ SẢN PHẨM KHÔNG TỒN TẠI!");
+                System.out.println("\t\t\t\t\t\t\t\t - MÃ PHIẾU NHẬP KHÔNG TỒN TẠI!");
                 return;
             }
 
