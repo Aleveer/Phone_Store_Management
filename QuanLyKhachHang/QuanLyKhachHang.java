@@ -1,5 +1,6 @@
 package QuanLyKhachHang;
 import GiaoDien.DataAccessObject;
+import Person.Person;
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,17 +8,21 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
-    public Khachhang[] kh;
+    public Khachhang[] kh = null;
+    public QuanLyKhachHang(int size) {
+        super();
+        kh = new Khachhang[size];
+    }
     public QuanLyKhachHang() {
         super();
     }
     static Scanner input = new Scanner(System.in);
     public Khachhang[] getListKhachhang() throws FileNotFoundException {
-        String[] result = Stream.read("src/DuLieu/customer.txt");
+        String[] result = Stream.read("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\customer.txt");
         kh = new Khachhang[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
-            kh[i] = new Khachhang(row[0], row[1], row[2], row[3], Integer.parseInt(row[4]), row[5], row[6], row[7]);
+            kh[i] = new Khachhang(row[0], row[1],  Integer.parseInt(row[2]), row[3], row[4], row[5], row[6], row[7]);
         }
         return kh;
     }
@@ -39,6 +44,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                 String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", khachhang.getID_Customer(), khachhang.getName(), khachhang.getAge(),
                         khachhang.getGender(), khachhang.getAddress(), khachhang.getEmail(), khachhang.getPhoneNumber(), khachhang.getKindOfCustomer());
                 System.out.println(read);
+
             }
         }
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
@@ -47,20 +53,16 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
     @Override
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN KHÁCH HÀNG----+");
-        System.out.print("Nhập ID khách hàng: ");
+        System.out.println("Nhập ID khách hàng: ");
         setID_Customer(input.nextLine());
 
-        int check = 0;
         for (Khachhang khachhang : kh) {
-            if (getID_Customer().equals(khachhang.getID_Customer())) {
-                check = 1;
-                break;
+            if (khachhang != null) {
+                if (getID_Customer().equals(khachhang.getID_Customer())) {
+                    System.out.println("\t\t\t\t\t\t\t\t -MÃ KHÁCH HÀNG BỊ TRÙNG!");
+                    break;
+                }
             }
-        }
-
-        if (check == 1) {
-            System.out.println("\t\t\t\t\t\t\t\t -MÃ KHÁCH HÀNG BỊ TRÙNG!");
-            return;
         }
         super.Add();
         System.out.print("Nhập loại khách hàng: ");
@@ -68,7 +70,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
 
         try {
             String input = getID_Customer() + ";" + getName() + ";" + getAge() + ";" + getGender() + ";" + getAddress() + ";" + getEmail() + ";" + getPhoneNumber() + ";" + getKindOfCustomer();
-            Stream.addOneLine("src/DuLieu/customer.txt", input);
+            Stream.addOneLine("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\customer.txt", input);
             System.out.println("\t\t\t\t\t\t\t\t+----NHẬP KHÁCH HÀNG THÀNH CÔNG----+");
             waitConsole();
         } catch (IOException e) {
@@ -126,7 +128,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                 data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
             }
             try {
-                Stream.addAll("src/DuLieu/customer.txt", data);
+                Stream.addAll("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\customer.txt", data);
                 System.out.println("\t\t\t\t\t\t\t\t+----SỬA THÔNG TIN NHÂN VIÊN THÀNH CÔNG----+");
                 waitConsole();
             } catch (IOException e) {
@@ -168,7 +170,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
                     data[i] = kh[i].getID_Customer() + ";" + kh[i].getName() + ";" + kh[i].getAge() + ";" + kh[i].getGender() + ";" + kh[i].getAddress() + ";" + kh[i].getEmail() + ";" + kh[i].getPhoneNumber() + ";" + kh[i].getKindOfCustomer();
                 }
                 try {
-                    Stream.addAll("src/DuLieu/customer.txt", data);
+                    Stream.addAll("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\customer.txt", data);
                     System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN KHÁCH HÀNG THÀNH CÔNG----+");
                     waitConsole();
                 } catch (IOException e) {

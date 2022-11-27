@@ -3,7 +3,7 @@ import Person.Person;
 public class Khachhang extends Person {
     private String ID_Customer;
     private String kindOfCustomer;
-    public Khachhang(String name, String gender, String address, String email, Integer age, String phonenumber, String ID_Customer, String kindOfCustomer) {
+    public Khachhang(String ID_Customer, String name, Integer age, String gender, String address, String email,  String phonenumber, String kindOfCustomer) {
         super();
         this.kindOfCustomer = kindOfCustomer;
         this.ID_Customer = ID_Customer;

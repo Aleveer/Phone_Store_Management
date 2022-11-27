@@ -1,5 +1,6 @@
 package QuanLyBaoHanh;
 
+import QuanLyKhachHang.Khachhang;
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,11 +8,21 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
 public class QuanLyBaoHanh extends BaoHanh {
-    public BaoHanh[] bh;
-    public QuanLyBaoHanh() {super();}
+    public BaoHanh[] bh = null;
+
+    public QuanLyBaoHanh(int size) {
+        super();
+        bh = new BaoHanh[size];
+    }
+
+    public QuanLyBaoHanh() {
+        super();
+    }
+
     static Scanner input = new Scanner(System.in);
+
     public BaoHanh[] getListBaoHanh() throws FileNotFoundException {
-        String[] result = Stream.read("src/DuLieu/insurance.txt");
+        String[] result = Stream.read("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\insurance.txt");
         bh = new BaoHanh[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
@@ -19,34 +30,49 @@ public class QuanLyBaoHanh extends BaoHanh {
         }
         return bh;
     }
+
     public void waitConsole() {
         input.nextLine();
         System.out.println("\t\t\t\t\t\t\t\t -Ấn Enter để tiếp tục");
         input.nextLine();
     }
-    public void read() throws FileNotFoundException {
-        System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH BẢO HÀNH----+");
-        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
-        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
-        System.out.println(header);
-        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
 
-        getListBaoHanh();
-        for (BaoHanh baoHanh : bh) {
-            if (bh[0].getID_Customer().contains("kh")) {
-                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
-                        baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
-                System.out.println(read);
+    public void read() throws FileNotFoundException {
+        try {
+            System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH BẢO HÀNH----+");
+            String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-18s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+            System.out.println(header);
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+
+            getListBaoHanh();
+            for (BaoHanh baoHanh : bh) {
+                if (bh[0].getID_Product().contains("sp")) {
+                    String read = String.format("| %-11s | %-25s | %-15s | %-12s | %-30s | %-25s | %-18s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
+                            baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
+                    System.out.println(read);
+                }
             }
+            System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
+            waitConsole();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Wrong!!!");
         }
-        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
-        waitConsole();
     }
 
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN VỀ BẢO HÀNH----+");
         System.out.println("Nhập mã sản phẩm: ");
         setID_Product(input.nextLine());
+
+        for (BaoHanh baohanh : bh) {
+            if (baohanh != null) {
+                if (getID_Product().equals(baohanh.getID_Product())) {
+                    System.out.println("\t\t\t\t\t\t\t\t -MÃ SẢN PHẨM BỊ TRÙNG!");
+                    break;
+                }
+            }
+        }
 
         System.out.print("Nhập ngày mua hàng:");
         setNgayMua(LocalDate.parse(input.nextLine()));
@@ -69,20 +95,21 @@ public class QuanLyBaoHanh extends BaoHanh {
 
         try {
             String input = getID_Product() + ";" + getNgayMua() + ";" + getSoNamBaoHanh() + ";" + getGoiBaoHanh() + ";" + getID_Customer() + ";" + getHoTenKH() + ";" + getPhoneNumber() + ";";
-            Stream.addOneLine("src/DuLieu/insurance.txt", input);
+            Stream.addOneLine("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\insurance.txt", input);
             System.out.println("\t\t\t\t\t\t\t\t+----NHẬP BẢO HÀNH THÀNH CÔNG----+");
             waitConsole();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     public BaoHanh[] addBH(BaoHanh[] bh, BaoHanh baoHanh) {
         bh = Arrays.copyOf(bh, bh.length + 1);
-        bh[bh.length -1] = baoHanh;
+        bh[bh.length - 1] = baoHanh;
         return bh;
     }
 
-    public void Search_byCategory() {
+    public void Search_byCategory() throws FileNotFoundException {
         BaoHanh[] result = new BaoHanh[0];
         System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
@@ -93,6 +120,7 @@ public class QuanLyBaoHanh extends BaoHanh {
         System.out.println("\t\t\t\t\t\t\t\t |4.Ngày mua hàng                          |");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        getListBaoHanh();
         int choose = input.nextInt();
         if (choose == 0) return;
         else {
@@ -101,8 +129,8 @@ public class QuanLyBaoHanh extends BaoHanh {
                     input.nextLine();
                     System.out.print("Mã khách hàng: ");
                     String ID_Customer = input.nextLine();
-                    for(BaoHanh baoHanh : bh) {
-                        if(ID_Customer.contains(baoHanh.getID_Customer())) {
+                    for (BaoHanh baoHanh : bh) {
+                        if (ID_Customer.contains(baoHanh.getID_Customer())) {
                             result = addBH(result, baoHanh);
                         }
                     }
@@ -111,8 +139,8 @@ public class QuanLyBaoHanh extends BaoHanh {
                     input.nextLine();
                     System.out.print("Số điện thoại: ");
                     String PhoneNumber = input.nextLine();
-                    for(BaoHanh baoHanh : bh) {
-                        if(PhoneNumber.contains(baoHanh.getPhoneNumber())) {
+                    for (BaoHanh baoHanh : bh) {
+                        if (PhoneNumber.contains(baoHanh.getPhoneNumber())) {
                             result = addBH(result, baoHanh);
                         }
                     }
@@ -121,8 +149,8 @@ public class QuanLyBaoHanh extends BaoHanh {
                     input.nextLine();
                     System.out.print("Số năm bảo hành: ");
                     int SoNamBaoHanh = input.nextInt();
-                    for(BaoHanh baoHanh : bh) {
-                        if(getSoNamBaoHanh().equals(SoNamBaoHanh)) {
+                    for (BaoHanh baoHanh : bh) {
+                        if (getSoNamBaoHanh().equals(SoNamBaoHanh)) {
                             result = addBH(result, baoHanh);
                         }
                     }
@@ -131,8 +159,8 @@ public class QuanLyBaoHanh extends BaoHanh {
                     input.nextLine();
                     System.out.print("Ngày mua hàng (cú pháp năm-tháng-ngày): ");
                     LocalDate ngayMua = LocalDate.parse(input.nextLine());
-                    for(BaoHanh baoHanh : bh) {
-                        if(baoHanh.getNgayMua().isEqual(ngayMua)) {
+                    for (BaoHanh baoHanh : bh) {
+                        if (baoHanh.getNgayMua().isEqual(ngayMua)) {
                             result = addBH(result, baoHanh);
                         }
                     }
@@ -140,26 +168,12 @@ public class QuanLyBaoHanh extends BaoHanh {
             }
         }
         System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN ĐÃ TÌM ĐƯỢC----+");
-        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
+        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-18s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         System.out.println(header);
 
-        for(BaoHanh baoHanh : result) {
-            String row = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
-                    baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
-            System.out.println(row);
-            waitConsole();
-        }
-        System.out.println("+----------------------------------------------------------------------+");
-    }
-    public void Output() {
-        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN VỀ BẢO HÀNH----+");
-        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
-        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
-        System.out.println(header);
-
-        for(BaoHanh baoHanh : bh) {
-            String row = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
+        for (BaoHanh baoHanh : result) {
+            String row = String.format("| %-11s | %-25s | %-15s | %-12s | %-30s | %-25s | %-18s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
                     baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
             System.out.println(row);
             waitConsole();
@@ -167,3 +181,4 @@ public class QuanLyBaoHanh extends BaoHanh {
         System.out.println("+----------------------------------------------------------------------+");
     }
 }
+

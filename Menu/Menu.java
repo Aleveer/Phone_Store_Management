@@ -2,8 +2,9 @@
 //Cần Chỉnh Sửa: Chi tiết sản phẩm
 
 package Menu;
+import java.io.FileNotFoundException;
 
-import Configurations.Configuation;
+import Configurations.QuanLyConfigurations;
 import QuanLySanPham.QuanLySanPham;
 import QuanLyBaoHanh.QuanLyBaoHanh;
 import QuanLyCTPN.QuanLyChiTietPhieuNhap;
@@ -22,8 +23,8 @@ public class Menu {
     QuanLySanPham sp = new QuanLySanPham();
     QuanLyHoaDon hd = new QuanLyHoaDon();
     QuanLyBaoHanh bh = new QuanLyBaoHanh();
-    Configurations.Configuation cfg = new Configuation();
-    QuanLyCTPN.QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap();
+    QuanLyConfigurations cfg = new QuanLyConfigurations();
+    QuanLyCTPN.QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap(15);
     QuanLyNCC.QuanLyNhaCungCap ncc = new QuanLyNhaCungCap();
 
     Scanner input = new Scanner(System.in);
@@ -36,8 +37,8 @@ public class Menu {
         QuanLySanPham sp = new QuanLySanPham();
         QuanLyHoaDon hd = new QuanLyHoaDon(); 
         QuanLyBaoHanh bh = new QuanLyBaoHanh();
-        Configurations.Configuation cfg = new Configuation();
-        QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap();
+        QuanLyConfigurations cfg = new QuanLyConfigurations();
+        QuanLyChiTietPhieuNhap ctpn = new QuanLyChiTietPhieuNhap(15);
         QuanLyNCC.QuanLyNhaCungCap ncc = new QuanLyNhaCungCap();
 
     }
@@ -90,10 +91,10 @@ public class Menu {
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         //System.out.println("\t\t\t\t\t\t\t\t |1.Dạo Quanh Cửa Hàng     |");
         System.out.println("\t\t\t\t\t\t\t\t |1.Nhập Hóa Đơn           |");
-        System.out.println("\t\t\t\t\t\t\t\t |2.Xuất Hóa Đơn            |");
-        System.out.println("\t\t\t\t\t\t\t\t |3.Tìm kiếm Hóa Đơn            |");
-        System.out.println("\t\t\t\t\t\t\t\t |4.Xóa Hóa Đơn       |");
-        System.out.println("\t\t\t\t\t\t\t\t |5.Sửa Hóa Đơn           |");
+        System.out.println("\t\t\t\t\t\t\t\t |2.Xuất Hóa Đơn           |");
+        System.out.println("\t\t\t\t\t\t\t\t |3.Tìm kiếm Hóa Đơn       |");
+        System.out.println("\t\t\t\t\t\t\t\t |4.Xóa Hóa Đơn            |");
+        System.out.println("\t\t\t\t\t\t\t\t |5.Sửa Hóa Đơn            |");
         System.out.println("\t\t\t\t\t\t\t\t +-------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
     }
@@ -197,7 +198,7 @@ public class Menu {
 //
 //        }
 //    }
-        public void menu () {
+        public void menu () throws FileNotFoundException {
             do {
                 showmenuPrimary();
                 choice = input.nextInt();
@@ -361,17 +362,14 @@ public class Menu {
                                 }
                                 case 2 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất chi tiết sản phẩm-----\n");
-                                    
-                                    sp.Output();
                                     cfg.Output();
                                 }
                                 case 3 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm chi tiết sản phẩm-----\n");
-                                    sp.Search_byCategory();
+                                    cfg.Search_byCategory();
                                 }
                                 case 4 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xóa Sản Phẩm-(ID)-----\n");
-                                    sp.Delete();
                                     cfg.Delete();
                                 }
                                 case 5 -> {
@@ -399,7 +397,7 @@ public class Menu {
                                 }
                                 case 2 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách phiếu nhập-----\n");
-                                    ctpn.Output();
+                                    ctpn.read();
                                 }
                                 case 3 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm phiếu nhập-(ID)-----\n");
@@ -469,7 +467,7 @@ public class Menu {
                                 }
                                 case 2 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Xuất danh sách bảo hành-----\n");
-                                    bh.Output();
+                                    bh.read();
                                 }
                                 case 3 -> {
                                     System.out.println("\n\t\t\t\t\t\t\t\t\t-----Tìm kiếm thông tin bảo hành-----\n");

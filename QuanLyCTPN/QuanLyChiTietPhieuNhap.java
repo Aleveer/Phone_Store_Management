@@ -1,5 +1,6 @@
 package QuanLyCTPN;
 
+import QuanLyKhachHang.Khachhang;
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,10 +10,15 @@ import java.util.Scanner;
 
 public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
     public ChiTietPhieuNhap[] DSCTPN;
+
+    public QuanLyChiTietPhieuNhap(int size) {
+        super();
+        DSCTPN = new ChiTietPhieuNhap[size];
+    }
     static Scanner input = new Scanner(System.in);
 
     public ChiTietPhieuNhap[] getListCTPN() throws FileNotFoundException {
-        String[] result = Stream.read("src/DuLieu/deliveryReceivedDetail.txt");
+        String[] result = Stream.read("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\PhieuNhap.txt");
         DSCTPN = new ChiTietPhieuNhap[result.length];
         for (int i = 0; i < result.length; i++) {
             String[] row = result[i].split(";");
@@ -36,7 +42,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
 
         getListCTPN();
         for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
-            if (DSCTPN[0].getID_PhieuNhap().contains("DSPN")) {
+            if (DSCTPN[0].getID_PhieuNhap().contains("pn")) {
                 String read = String.format("| %-10s | %-10s | %-10s | %-25s |", chiTietPhieuNhap.getID_PhieuNhap(), chiTietPhieuNhap.getID_Product(), chiTietPhieuNhap.getAmount(),
                         chiTietPhieuNhap.getPrice());
                 System.out.println(read);
@@ -51,17 +57,13 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
         System.out.print("Nhập ID phiếu nhập: ");
         setID_PhieuNhap(input.nextLine());
 
-        int check = 0;
-        for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
-            if (getID_PhieuNhap().equals(chiTietPhieuNhap.getID_PhieuNhap())) {
-                check = 1;
-                break;
+        for (ChiTietPhieuNhap chitietphieunhap : DSCTPN) {
+            if (chitietphieunhap != null) {
+                if (getID_PhieuNhap().equals(chitietphieunhap.getID_PhieuNhap())) {
+                    System.out.println("\t\t\t\t\t\t\t\t -MÃ PHIẾU NHẬP BỊ TRÙNG!");
+                    break;
+                }
             }
-        }
-
-        if (check == 1) {
-            System.out.println("\t\t\t\t\t\t\t\t -MÃ PHIẾU NHẬP BỊ TRÙNG!");
-            return;
         }
 
         System.out.print("Nhập mã sản phẩm: ");
@@ -76,7 +78,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
 
         try {
             String input = getID_PhieuNhap() + ";" + getID_Product() + ";" + getAmount() + ";" + getPrice();
-            Stream.addOneLine("src/DuLieu/deliveryReceivedDetail.txt", input);
+            Stream.addOneLine("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\PhieuNhap.txt", input);
             System.out.println("\t\t\t\t\t\t\t\t+----NHẬP CHI TIẾT PHIẾU NHẬP THÀNH CÔNG----+");
             waitConsole();
         } catch (IOException e) {
@@ -90,16 +92,17 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             System.out.print("\t\t\t\t\t\t\t\t - Mời bạn nhập mã phiếu nhập cần chỉnh sửa: ");
             String ID_PhieuNhap = input.nextLine();
             ChiTietPhieuNhap ctp_nhap = null;
+            getListCTPN();
 
             for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
-                if (chiTietPhieuNhap.getID_PhieuNhap().equals(ID_PhieuNhap)) {
+                if (chiTietPhieuNhap.getID_PhieuNhap().equals(getID_PhieuNhap())) {
                     ctp_nhap = chiTietPhieuNhap;
                     break;
                 }
             }
 
             if (ctp_nhap == null) {
-                System.out.println("\t\t\t\t\t\t\t\t - Mã phiếu nhập bạn vừa nhập không tồn tại!");
+                System.out.println("\t\t\t\t\t\t\t\t -MÃ PHIẾU NHẬP KHÔNG TỒN TẠI!");
                 return;
             }
 
@@ -132,7 +135,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
                 data[i] = DSCTPN[i].getID_PhieuNhap() + ";" + DSCTPN[i].getID_Product() + ";" + DSCTPN[i].getAmount() + ";" + DSCTPN[i].getPrice();
             }
             try {
-                Stream.addAll("src/DuLieu/deliveryReceivedDetail.txt", data);
+                Stream.addAll("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\PhieuNhap.txt", data);
                 System.out.println("\t\t\t\t\t\t\t\t+----SỬA THÔNG TIN CHI TIẾT PHIẾU NHẬP THÀNH CÔNG----+");
                 waitConsole();
             } catch (IOException e) {
@@ -151,6 +154,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             System.out.print("\t\t\t\t\t\t\t\t -Nhập mã phiếu nhập cần xóa: ");
             String ID_Phieunhap = input.nextLine();
             ChiTietPhieuNhap ctp_nhap = null;
+            getListCTPN();
 
             for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
                 if (chiTietPhieuNhap.getID_PhieuNhap().equals(ID_Phieunhap)) {
@@ -175,7 +179,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
                 data[i] = DSCTPN[i].getID_PhieuNhap() + ";" + DSCTPN[i].getID_Product() + ";" + DSCTPN[i].getAmount() + DSCTPN[i].getPrice();
             }
             try {
-                Stream.addAll("src/DuLieu/deliveryReceivedDetail.txt", data);
+                Stream.addAll("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\PhieuNhap.txt", data);
                 System.out.println("\t\t\t\t\t\t\t\t +----XÓA THÔNG TIN CHI TIẾT PHIẾU NHẬP THÀNH CÔNG----+");
                 waitConsole();
             } catch (IOException e) {
@@ -204,7 +208,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
         return DSCTPN;
     }
 
-    public void Search_byCategory() {
+    public void Search_byCategory() throws FileNotFoundException {
         ChiTietPhieuNhap[] result = new ChiTietPhieuNhap[0];
         System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
@@ -214,6 +218,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
         System.out.println("\t\t\t\t\t\t\t\t |3.Số lượng sản phẩm                      |");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
         System.out.print("\t\t\t\t\t\t\t\t - Mời Bạn Nhập Lựa Chọn: ");
+        getListCTPN();
         int choose = input.nextInt();
         if (choose == 0) return;
         else {
@@ -262,17 +267,4 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
         System.out.println("---------------------------------------------------------------------");
     }
 
-    public void Output() {
-        System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN CHI TIẾT PHIẾU NHẬP----+");
-        String header = String.format("| %-10s | %-10s | %-10s | %-25s |", "Mã phiếu nhập", "Mã sản phẩm", "Số lượng", "Đơn giá");
-        System.out.format("+---------------------------------------------------------------------+%n");
-        System.out.println(header);
-
-        for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
-            String row = String.format("| %-10s | %-10s | %-10s | %-25s |", chiTietPhieuNhap.getID_PhieuNhap(), chiTietPhieuNhap.getID_Product(), chiTietPhieuNhap.getAmount(),
-                    chiTietPhieuNhap.getPrice());
-            System.out.println(row);
-        }
-        System.out.println("---------------------------------------------------------------------");
-    }
 }

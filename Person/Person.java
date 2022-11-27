@@ -8,7 +8,7 @@ public class Person {
     private String name, gender, address, email, phoneNumber;
     private Integer age;
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
     public void setName(String name) {
