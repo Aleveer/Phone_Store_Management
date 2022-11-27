@@ -1,9 +1,10 @@
 package QuanLyBaoHanh;
-import QuanLyKhachHang.Khachhang;
+
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 public class QuanLyBaoHanh extends BaoHanh {
     public BaoHanh[] bh;
@@ -25,7 +26,7 @@ public class QuanLyBaoHanh extends BaoHanh {
     }
     public void read() throws FileNotFoundException {
         System.out.println("\t\t\t\t\t\t\t\t +----DANH SÁCH BẢO HÀNH----+");
-        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", "ID", "Họ tên", "Tuổi", "Giới Tính", "Địa chỉ", "Email", "Số điện thoại", "Loại khách hàng");
+        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         System.out.println(header);
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
@@ -33,34 +34,56 @@ public class QuanLyBaoHanh extends BaoHanh {
         getListBaoHanh();
         for (BaoHanh baoHanh : bh) {
             if (bh[0].getID_Customer().contains("kh")) {
-                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", khachhang.getID_Customer(), khachhang.getName(), khachhang.getAge(),
-                        khachhang.getGender(), khachhang.getAddress(), khachhang.getEmail(), khachhang.getPhoneNumber(), khachhang.getKindOfCustomer());
+                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
+                        baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
                 System.out.println(read);
             }
         }
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         waitConsole();
     }
+
     public void Add() {
         System.out.println("\t\t\t\t\t\t\t\t +----NHẬP THÔNG TIN VỀ BẢO HÀNH----+");
-        System.out.print("Nhập số năm bảo hành:");
-        setSoNamBaoHanh(input.nextInt());
-
-        input.nextLine();
-        System.out.print("Nhập mã khách hàng:");
-        setID_Customer(input.nextLine());
-
-        System.out.print("Nhập SDT khách hàng:");
-        setPhoneNumber(input.nextLine());
+        System.out.println("Nhập mã sản phẩm: ");
+        setID_Product(input.nextLine());
 
         System.out.print("Nhập ngày mua hàng:");
         setNgayMua(LocalDate.parse(input.nextLine()));
 
-        BaoHanh baoHanh = new BaoHanh(getNgayMua(), getSoNamBaoHanh(), getID_Customer(), getPhoneNumber());
-        DSBH.add(baoHanh);
+        System.out.print("Nhập số năm bảo hành:");
+        setSoNamBaoHanh(input.nextInt());
+
+        input.nextLine();
+        System.out.print("Nhập gói bảo hành:");
+        setGoiBaoHanh(input.nextLine());
+
+        System.out.print("Nhập mã khách hàng:");
+        setID_Customer(input.nextLine());
+
+        System.out.print("Nhập họ tên khách hàng:");
+        setHoTenKH(input.nextLine());
+
+        System.out.print("Nhập SDT khách hàng:");
+        setPhoneNumber(input.nextLine());
+
+        try {
+            String input = getID_Product() + ";" + getNgayMua() + ";" + getSoNamBaoHanh() + ";" + getGoiBaoHanh() + ";" + getID_Customer() + ";" + getHoTenKH() + ";" + getPhoneNumber() + ";";
+            Stream.addOneLine("src/DuLieu/insurance.txt", input);
+            System.out.println("\t\t\t\t\t\t\t\t+----NHẬP BẢO HÀNH THÀNH CÔNG----+");
+            waitConsole();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    public BaoHanh[] addBH(BaoHanh[] bh, BaoHanh baoHanh) {
+        bh = Arrays.copyOf(bh, bh.length + 1);
+        bh[bh.length -1] = baoHanh;
+        return bh;
+    }
+
     public void Search_byCategory() {
-        ArrayList<BaoHanh> result = new ArrayList<>();
+        BaoHanh[] result = new BaoHanh[0];
         System.out.println("\t\t\t\t\t\t\t\t +--------NHẬP MỤC LỤC CẨN TÌM KIẾM--------+");
         System.out.println("\t\t\t\t\t\t\t\t |0.Thoát                                  |");
         System.out.println("\t\t\t\t\t\t\t\t +-----------------------------------------+");
@@ -73,62 +96,73 @@ public class QuanLyBaoHanh extends BaoHanh {
         int choose = input.nextInt();
         if (choose == 0) return;
         else {
-            DSBH.forEach((baoHanh) -> {
-                switch (choose) {
-                    case 1 -> {
-                        input.nextLine();
-                        System.out.print("Mã khách hàng: ");
-                        int ID_Customer = input.nextInt();
-                        if (baoHanh.getID_Customer().equals(ID_Customer)) {
-                            result.add(baoHanh);
-                        }
-                    }
-                    case 2 -> {
-                        input.nextLine();
-                        System.out.print("Số điện thoại: ");
-                        String PhoneNumber = input.nextLine();
-                        if (baoHanh.getPhoneNumber().contains((PhoneNumber))) {
-                            result.add(baoHanh);
-                        }
-                    }
-                    case 3 -> {
-                        System.out.print("Số năm bảo hành: ");
-                        int SoNamBaoHanh = input.nextInt();
-                        if (baoHanh.getSoNamBaoHanh().equals(SoNamBaoHanh)) {
-                            result.add(baoHanh);
-                        }
-                    }
-                    case 4 -> {
-                        input.nextLine();
-                        System.out.print("Ngày mua hàng (cú pháp năm-tháng-ngày): ");
-                        String date = input.next();
-                        if (baoHanh.getNgayMua().isEqual(ngayMua)) {
-                            result.add(baoHanh);
+            switch (choose) {
+                case 1 -> {
+                    input.nextLine();
+                    System.out.print("Mã khách hàng: ");
+                    String ID_Customer = input.nextLine();
+                    for(BaoHanh baoHanh : bh) {
+                        if(ID_Customer.contains(baoHanh.getID_Customer())) {
+                            result = addBH(result, baoHanh);
                         }
                     }
                 }
-            });
+                case 2 -> {
+                    input.nextLine();
+                    System.out.print("Số điện thoại: ");
+                    String PhoneNumber = input.nextLine();
+                    for(BaoHanh baoHanh : bh) {
+                        if(PhoneNumber.contains(baoHanh.getPhoneNumber())) {
+                            result = addBH(result, baoHanh);
+                        }
+                    }
+                }
+                case 3 -> {
+                    input.nextLine();
+                    System.out.print("Số năm bảo hành: ");
+                    int SoNamBaoHanh = input.nextInt();
+                    for(BaoHanh baoHanh : bh) {
+                        if(getSoNamBaoHanh().equals(SoNamBaoHanh)) {
+                            result = addBH(result, baoHanh);
+                        }
+                    }
+                }
+                case 4 -> {
+                    input.nextLine();
+                    System.out.print("Ngày mua hàng (cú pháp năm-tháng-ngày): ");
+                    LocalDate ngayMua = LocalDate.parse(input.nextLine());
+                    for(BaoHanh baoHanh : bh) {
+                        if(baoHanh.getNgayMua().isEqual(ngayMua)) {
+                            result = addBH(result, baoHanh);
+                        }
+                    }
+                }
+            }
         }
         System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN ĐÃ TÌM ĐƯỢC----+");
-        String header = String.format("|\t\t%s\t|\t%s\t|\t%s\t\t|\t\t%s\t|",
-                "Mã khách hàng", "Số năm bảo hành", "Số điện thoại", "Ngày mua");
+        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
+        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         System.out.println(header);
-        for(BaoHanh DSBH : result) {
-            String row = String.format("|\t\t%s\t\t\t\t|\t%s\t\t\t\t|\t%s\t\t\t|\t\t%s\t\t|",
-                    DSBH.getID_Customer(), DSBH.getSoNamBaoHanh(), DSBH.getPhoneNumber(), DSBH.getNgayMua());
+
+        for(BaoHanh baoHanh : result) {
+            String row = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
+                    baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
             System.out.println(row);
+            waitConsole();
         }
         System.out.println("+----------------------------------------------------------------------+");
     }
     public void Output() {
         System.out.println("\t\t\t\t\t\t\t\t +----TẤT CẢ THÔNG TIN VỀ BẢO HÀNH----+");
-        String header = String.format("|\t\t%s\t|\t%s\t|\t%s\t\t|\t\t%s\t|",
-                "Mã khách hàng", "Số năm bảo hành", "Số điện thoại", "Ngày mua");
+        String header = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", "Mã sản phẩm", "Ngày mua", "Số năm bảo hành", "Gói bảo hành", "Mã khách hàng", "Họ tên khách hàng", "Số điện thoại");
+        System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
         System.out.println(header);
-        for(BaoHanh DSBH : DSBH) {
-            String row = String.format("|\t\t%s\t\t\t\t|\t%s\t\t\t\t|\t%s\t\t\t|\t\t%s\t\t|",
-                    DSBH.getID_Customer(), DSBH.getSoNamBaoHanh(), DSBH.getPhoneNumber(), DSBH.getNgayMua());
+
+        for(BaoHanh baoHanh : bh) {
+            String row = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s |", baoHanh.getID_Product(), baoHanh.getNgayMua(), baoHanh.getSoNamBaoHanh(),
+                    baoHanh.getGoiBaoHanh(), baoHanh.getID_Customer(), baoHanh.getHoTenKH(), baoHanh.getPhoneNumber());
             System.out.println(row);
+            waitConsole();
         }
         System.out.println("+----------------------------------------------------------------------+");
     }

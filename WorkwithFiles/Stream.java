@@ -25,8 +25,7 @@ public class Stream {
 	        String data = sc.nextLine();
 	        String[] name = output.clone();
 	        output = new String[++size];
-	        for(int i = 0; i < name.length; i++)
-	        	output[i] = name[i];
+			System.arraycopy(name, 0, output, 0, name.length);
 	        output[count++] = data;
 	     }
 	    sc.close();
