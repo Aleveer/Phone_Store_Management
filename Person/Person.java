@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Person {
     static Scanner input = new Scanner(System.in);
-    private String name, gender, address, email, phoneNumber;
-    private Integer age;
+    protected String name, gender, address, email, phoneNumber;
+    protected Integer age;
 
     public  String getName() {
         return name;
@@ -51,7 +51,6 @@ public class Person {
     }
 
     public Person(String name, String gender, String address, String email, Integer age, String phoneNumber) {
-        super();
         this.name = name;
         this.gender = gender;
         this.address = address;
@@ -61,7 +60,7 @@ public class Person {
     }
 
     public Person() {
-        super();
+
     }
     public void Add() {
         try {

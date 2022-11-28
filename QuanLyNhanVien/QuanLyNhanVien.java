@@ -1,5 +1,6 @@
 package QuanLyNhanVien;
 import GiaoDien.DataAccessObject;
+import QuanLyKhachHang.Khachhang;
 import WorkwithFiles.Stream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,6 +9,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 public class QuanLyNhanVien extends NhanVien implements DataAccessObject {
     public NhanVien[] nv;
+    public QuanLyNhanVien(int size) {
+        super();
+        nv = new NhanVien[size];
+    }
     public QuanLyNhanVien() {
         super();
     }

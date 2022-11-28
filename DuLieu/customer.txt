@@ -1,6 +1,2 @@
-kh08;Nguyễn Phu Thịnh;19;Nam;50 Tân Bình;thinh@gmail.com;0918273645;đại gia
-KH99;Phúc Thịnh;28;Nam;50 Bình Tân;thinhnguyen@gmail.com;0918273645;VIP
-kh76;Thiên chương;35;Nam;50 thành thái;chuong@gmail.com;0912345678;đại gia
-kh33;Trịnh Tiến;22;Nam;399 Lý thái Tổ;trinh@gmail.com;0997867553;trung
-kh11;Viết Hoàng;23;Nam;45 Hoàng văn Thụ;hoang@gmail.com;;vip
+kh08;Nguyễn Phúc Thịnh;20;Nam;53 tân Bình;thinh@gmail.com;0918273645;vip
 kh45;Phú Hiếu;17;Nam;175 Phú Nhuận ;hiue@gmail.com;0913243546;vip

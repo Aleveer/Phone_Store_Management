@@ -1,5 +1,5 @@
-em1;Nguyễn Văn Anh;21;nam;13/20 Phạm ngọc Thạch;NVA@gmail.com;093890944;nhân viên;ca tối
-em2;Bùi Thị Bạch Cốt Tinh 1;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý;ca sáng
-em3;Bùi Thị Bạch Cốt Tinh 2;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý nhân viên;ca sáng
-em4;Bùi Thị Bạch Cốt Tinh 3;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý sản phẩm;ca sáng
-em5;Bùi Thị Bạch Cốt Tinh 4;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý tài khoản;ca sáng
+nv1;Nguyễn Văn Anh;21;nam;13/20 Phạm ngọc Thạch;NVA@gmail.com;093890944;nhân viên;ca tối
+nv2;Bùi Thị Bạch Cốt Tinh 1;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý;ca sáng
+nv3;Bùi Thị Bạch Cốt Tinh 2;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý nhân viên;ca sáng
+nv4;Bùi Thị Bạch Cốt Tinh 3;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý sản phẩm;ca sáng
+nv5;Bùi Thị Bạch Cốt Tinh 4;22;nam;625 Chảo lửa;Snake@gmail.com;092847382;Quản lý tài khoản;ca sáng

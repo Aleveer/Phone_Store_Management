@@ -39,10 +39,10 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
         System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
 
         getListKhachhang();
-        for (Khachhang khachhang : kh) {
+        for (int i = 0; i < kh.length; i++) {
             if (kh[0].getID_Customer().contains("kh")) {
-                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", khachhang.getID_Customer(), khachhang.getName(), khachhang.getAge(),
-                        khachhang.getGender(), khachhang.getAddress(), khachhang.getEmail(), khachhang.getPhoneNumber(), khachhang.getKindOfCustomer());
+                String read = String.format("| %-5s | %-25s | %-4s | %-9s | %-30s | %-25s | %-15s | %-20s |", kh[i].getID_Customer(), kh[i].getName(), kh[i].getAge(),
+                        kh[i].getGender(), kh[i].getAddress(), kh[i].getEmail(), kh[i].getPhoneNumber(), kh[i].getKindOfCustomer());
                 System.out.println(read);
 
             }
@@ -83,6 +83,7 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             System.out.print("\t\t\t\t\t\t\t\t - Mời bạn nhập mã khách hàng cần chỉnh sửa: ");
             String ID_Khachhang = input.nextLine();
             Khachhang k_hang = null;
+            getListKhachhang();
 
             for (Khachhang khachhang : kh) {
                 if (khachhang.getID_Customer().equalsIgnoreCase(ID_Khachhang)) {
@@ -103,15 +104,15 @@ public class QuanLyKhachHang extends Khachhang implements DataAccessObject {
             System.out.format("+-------+---------------------------+------+-----------+--------------------------------+---------------------------+-----------------+----------------------+%n");
 
             String row = String.format("|\t\t%s\t\t|\t%s\t|\t%s\t|\t\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t|",
-                    k_hang.getName(), k_hang.getAge(), k_hang.getGender(),
-                    k_hang.getAddress(), k_hang.getEmail(), k_hang.getID_Customer(), k_hang.getKindOfCustomer(), k_hang.getPhoneNumber());
+                    k_hang.getID_Customer(), k_hang.getName(), k_hang.getAge(), k_hang.getGender(),
+                    k_hang.getAddress(), k_hang.getEmail(), k_hang.getPhoneNumber(), k_hang.getKindOfCustomer(), k_hang.getPhoneNumber());
             System.out.println(row);
 
             String[] data = new String[kh.length];
 
             for (int i = 0; i < kh.length; i++) {
-                if (ID_Khachhang.equals(getID_Customer())) {
-                    System.out.print("Nhập thông tin khách hàng:");
+                if (ID_Khachhang.equals(kh[i].getID_Customer())) {
+                    System.out.println("\t\t\t\t\t\t\t\t -Nhập thông tin khách hàng");
                     super.Add();
 
                     System.out.print("Nhập loại khách hàng: ");

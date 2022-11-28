@@ -95,7 +95,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             getListCTPN();
 
             for (ChiTietPhieuNhap chiTietPhieuNhap : DSCTPN) {
-                if (chiTietPhieuNhap.getID_PhieuNhap().equals(getID_PhieuNhap())) {
+                if (chiTietPhieuNhap.getID_PhieuNhap().equals(ID_PhieuNhap)) {
                     ctp_nhap = chiTietPhieuNhap;
                     break;
                 }
@@ -176,7 +176,7 @@ public class QuanLyChiTietPhieuNhap extends ChiTietPhieuNhap {
             }
             String[] data = new String[DSCTPN.length];
             for (int i = 0; i < DSCTPN.length; i++) {
-                data[i] = DSCTPN[i].getID_PhieuNhap() + ";" + DSCTPN[i].getID_Product() + ";" + DSCTPN[i].getAmount() + DSCTPN[i].getPrice();
+                data[i] = DSCTPN[i].getID_PhieuNhap() + ";" + DSCTPN[i].getID_Product() + ";" + DSCTPN[i].getAmount() + ";" + DSCTPN[i].getPrice();
             }
             try {
                 Stream.addAll("C:\\Users\\duyph\\Desktop\\ProjectOOP_Final\\DuLieu\\PhieuNhap.txt", data);
