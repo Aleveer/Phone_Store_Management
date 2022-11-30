@@ -1,7 +1,7 @@
 **ĐỒ ÁN LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG** (JAVA)
 Project: Quản lý cửa hàng điện thoại.
 
-+------------*THÀNH VIÊN NHÓM*------------+ 
++------------*THÀNH VIÊN NHÓM*------------+
 | STT | MÃ SINH VIÊN |       HỌ TÊN       |
 +-----+--------------+--------------------+
 |  1  | 3121410103   | [Nguyễn Anh Danh]  |

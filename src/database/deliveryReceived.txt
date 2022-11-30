@@ -1,0 +1,4 @@
+5.0E7;ncc1;em3;dr1;Công ty cung cấp Nokia;2022-11-30;04:52:29.536291900
+1.2E8;ncc1;em3;dr2;Công ty cung cấp Nokia;2022-11-29;05:04:46.834852
+1.2E8;ncc2;em3;dr3;Nhà phân phối Vsmart;2022-11-25;05:04:46.834852
+1.2E8;ncc3;em3;dr4;Ông Hoàng Iphone;2022-11-22;05:04:46.834852

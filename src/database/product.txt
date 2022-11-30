@@ -1,0 +1,6 @@
+nokia C20;pr9;Nokia;50;14;1000000.0;1
+Iphone 12;pr2;iphong;30;12;1.5E7;1
+Oppo Reno Update 6;pr3;oppo;30;20;2000000.0;1
+Xiaomi Redmi Note 11;pr5;Xiaomi;25;23;4490000.0;1
+Vsmart Joy 4;pr6;vsmart;26;23;2.5E7;1
+Updated Phone;pr7;updated;20;12;2000000.0;1
