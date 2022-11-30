@@ -18,6 +18,7 @@ Project: Quản lý cửa hàng điện thoại.
 |  4  | 3121410003   | [Phan Duy]         |
 
 |  5  | 3118410125   | [Trần Kim Hiếu]    |
+
 +-----+--------------+--------------------+
 
 [Sơ đồ UML] https://maglit.me/umldiagram
