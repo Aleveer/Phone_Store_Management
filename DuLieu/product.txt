@@ -1,6 +1,0 @@
-pr1;nokia C20;10;1000000;1
-pr2;Iphone 12;12;15000000;1
-pr3;Oppo Reno 6;15;2000000;1
-pr4;Samsung Galaxy j7;20;3500000;1
-pr5;Xiaomi Redmi Note 11;23;4490000;1
-pr6;Vsmart Joy 4;26;25000000;1
