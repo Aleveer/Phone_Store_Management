@@ -1,7 +1,0 @@
-cs1;Hồ Hoàn Hảo Tâm;25;nam;1837 Bãi rác công cộng;tripleH@gmail.com;0918273666;Đại Gia
-cs2;Trần Nam Siêu Sao;22;nam;47/23 Lê Văn Sỹ, Bà Rịa;star3467@gmail.com;0937968944;khách hàng lâu năm
-cs3;Mai Y Anh Hí;25;nữ;19/23 Hoàng Văn Thụ;numanuma@gmail.com;0489374284;tiềm năng
-cs4;Nguyễn Thành Huy;31;nam;1/2/3/4/5 Đố anh tìm thấy em;NTH@gmail.com;0962734823;đỗ nghèo khỉ
-cs5;Phan Độc Đắc;22;nữ;9999 Hồ Hoàng Kim;renogold@gmail.com;0123456789;đại gia
-cs6;Bành Thị Thêm;69;nu;123 đường thêm;them@gmai.com;0123456789;rất giàu
-cs7;Trần Hoàng Created;12;nam;100 created recently;created@gmail.com;0192839239;Khách hào phóng

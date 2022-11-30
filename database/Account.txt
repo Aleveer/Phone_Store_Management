@@ -1,9 +1,0 @@
-ac1;WhiteSkeleton1;123456;p1
-ac2;WhiteSkeleton1;123456;p2
-ac3;WhiteSkeleton1;123456;p3
-ac4;Caubebutchi;123456;p1
-ac5;admin2;123456;p2
-ac6;a;123;p1
-ac7;p1;1;p1
-ac8;p2;1;p2
-ac9;p3;1;p3
